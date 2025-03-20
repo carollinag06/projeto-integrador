@@ -65,7 +65,7 @@ nav a:hover {
 }
 
 #home {
-  background-image: url(imagens/italian\ restaurant\ \(Apresentação\)\ \(3\).png);
+  background-image: url(imagens/imagem-home/italian\ restaurant\ \(Apresentação\)\ \(3\).png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -119,3 +119,86 @@ nav a:hover {
   border-radius: 5px;
 }
 
+/*SECTION INSTA*/
+#insta{
+  background-color: #FFF3E6;
+  padding: 4% 0;
+}
+
+.titulo {
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+.titulo h2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4F2C1D;
+}
+
+.titulo h1 {
+  font-size: 56px;
+  color: #4F2C1D;
+  padding-bottom: 25px;
+}
+
+.titulo button {
+  color: #30170c;
+  padding: 8px 22px;
+  border: 1px solid #4F2C1D;
+  background-color: #fa202f77;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/*fotos do insta*/
+.fotos-insta {
+  text-align: center;
+}
+
+.fotos-insta img {
+  width: 250px;
+  cursor: pointer;
+  position: relative;
+}
+
+.fotos-insta .linha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+  gap: 8px;
+  padding: 4px;
+}
+
+.fotos-insta img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Cor do overlay */
+  opacity: 0; /* Invisível inicialmente */
+  transition: opacity 0.3s ease;
+}
+
+.fotos-insta img:hover::before {
+  opacity: 1; /* Aparece o overlay ao passar o mouse */
+}
+
+
+.overlay{
+  position: absolute;
+  background-color: black;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.;
+}
