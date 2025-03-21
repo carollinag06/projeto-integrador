@@ -30,20 +30,34 @@ nav ul {
 }
 
 nav a {
+  display: inline-block;
+  position: relative; 
   color: rgb(0, 0, 0);
   text-decoration: none;
   font-weight: 600;
-  padding: 10px;
-  transition: 0.3s;
+  padding: 8px 12px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%; 
+  bottom: -3px; 
+  width: 0; 
+  height: 2px; 
+  background-color: #926709; 
+  transition: width 0.4s ease-out, left 0.4s ease-out;
+}
+
+nav a:hover::after {
+  width: 100%; 
+  left: 0; 
 }
 
 nav a:hover {
-  padding: 10px;
-  border-radius: 10px;
   color: #926709;
-  background-color: #ffecb3;
-  outline: 2px solid #ffcb45;
-  outline-offset: 3px;
 }
 
 .pizza img {
@@ -100,7 +114,7 @@ nav a:hover {
 }
 
 #home .centro h3 span{
-  background-color: #bc1823;
+  background-color: darkgreen;
   color: white;
   padding: 10px;
 }
@@ -111,12 +125,18 @@ nav a:hover {
 }
 
 #home button{
-  background-color: #bc1823;
+  background-color: #9b050f;
   color: white;
   padding: 10px;
   margin: 30px 50px 10px 50px;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#home button:hover{
+  transform: scale(1.05);
 }
 
 /*SECTION INSTA*/
@@ -143,25 +163,25 @@ nav a:hover {
 }
 
 .titulo button {
-  color: #30170c;
+  color: white;
   padding: 8px 22px;
   border: 1px solid #4F2C1D;
-  background-color: #fa202f77;
+  background-color: #bc1823;
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.3s ease-in;
 }
 
+.titulo button:hover{
+  transform: scale(1.05);
+  
+
+}
 
 /*fotos do insta*/
 .fotos-insta {
   text-align: center;
-}
-
-.fotos-insta img {
-  width: 250px;
-  cursor: pointer;
-  position: relative;
 }
 
 .fotos-insta .linha {
@@ -176,29 +196,42 @@ nav a:hover {
   padding: 4px;
 }
 
-.fotos-insta img::before {
-  content: "";
+.fotos-insta img {
+  width: 100%;
+  max-width: 250px;
+  cursor: pointer;
+  display: block;
+}
+
+.fotos-insta .imagem{
+  position: relative;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Cor do overlay */
-  opacity: 0; /* Invisível inicialmente */
-  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.568);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
 }
 
-.fotos-insta img:hover::before {
-  opacity: 1; /* Aparece o overlay ao passar o mouse */
+.overlay i{
+  text-align: center;
 }
 
-
-.overlay{
-  position: absolute;
-  background-color: black;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.;
+.imagem:hover .overlay {
+  opacity: 1;
 }
