@@ -2,8 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
 }
 
+button{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*HEADER*/
 header {
   position: absolute;
   top: 3%;
@@ -60,7 +66,8 @@ nav a:hover {
   color: #926709;
 }
 
-.pizza img {
+/*SECTION HOME*/
+.imagens-flutuantes .pizza img {
   padding-top: 6%;
   width: 16%; 
   max-width: 400px; 
@@ -68,7 +75,7 @@ nav a:hover {
   position: absolute;
 }
 
-.macarrao img{
+.imagens-flutuantes .macarrao img{
   padding-top: 6%;
   width: 17%; 
   max-width: 400px; 
@@ -164,9 +171,9 @@ nav a:hover {
 
 .titulo button {
   color: white;
-  padding: 8px 22px;
+  padding: 10px 22px;
   border: 1px solid #4F2C1D;
-  background-color: #bc1823;
+  background-color: maroon;
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
@@ -175,8 +182,6 @@ nav a:hover {
 
 .titulo button:hover{
   transform: scale(1.05);
-  
-
 }
 
 /*fotos do insta*/
@@ -235,3 +240,53 @@ nav a:hover {
 .imagem:hover .overlay {
   opacity: 1;
 }
+
+/*SECTION RESERVAS*/
+#reserva{
+  background-color: #FFF3E6;
+  padding-bottom: 8%;
+}
+
+#reserva h1{
+  font-size: 27px;
+  color: #4F2C1D;
+  text-align: center;
+  padding: 20px;
+}
+
+#reserva .localizacao{
+  display: flex;
+  gap: 5%;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+#reserva .localizacao button{
+  color: white;
+  padding: 12px 22px;
+  border: none;
+  background-color: maroon;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+#reserva .localizacao button:hover{
+  background-color: rgb(255, 0, 0);
+}
+
+#reserva .whatsapp{
+  display: flex;
+  margin: auto;
+  
+  color: white;
+  padding: 12px 22px;
+  border: none;
+  background-color: maroon;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+
