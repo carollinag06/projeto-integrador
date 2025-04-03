@@ -1,3 +1,11 @@
+:root {
+  --cor-primaria: #800000;
+  --cor-secundaria: #4F2C1D;
+  --cor-destaque: #a77813;
+  --cor-fonte: #ffffff;
+  --cor-fundo: #fff3e6cb;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -17,31 +25,50 @@ header {
   transform: translateX(-50%);
   width: 80%;
   max-width: 1200px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+
+header h1{
+  color: var(--cor-fonte);
+  font-size: 38px;
+}
+
+header button{
+  justify-content: center;
+  color: var(--cor-fonte);
+  padding: 8px 10px;
+  border: 1px solid var(--cor-secundaria);
+  background-color: var(--cor-primaria);
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+  margin-left: 20px;
 }
 
 nav {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   font-size: 18px;
+  padding-top: 20px;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  gap: 80px;
-  margin: auto;
-  font-size: 17px;
+  gap: 20px;
+  margin-left: auto;
 }
 
 nav a {
-  display: inline-block;
+  display: flex;
   position: relative; 
-  color: rgb(0, 0, 0);
+  color: var(--cor-fonte);
   text-decoration: none;
   font-weight: 600;
-  padding: 8px 12px;
+  padding: 0px 12px;
   transition: color 0.3s ease;
   cursor: pointer;
 }
@@ -53,7 +80,7 @@ nav a::after {
   bottom: -3px; 
   width: 0; 
   height: 2px; 
-  background-color: #926709; 
+  background-color: var(--cor-destaque); 
   transition: width 0.4s ease-out, left 0.4s ease-out;
 }
 
@@ -63,92 +90,60 @@ nav a:hover::after {
 }
 
 nav a:hover {
-  color: #926709;
+  color: var(--cor-destaque);
 }
 
 /*SECTION HOME*/
-.imagens-flutuantes .pizza img {
-  padding-top: 6%;
-  width: 16%; 
-  max-width: 400px; 
-  height: auto; 
-  position: absolute;
-}
-
-.imagens-flutuantes .macarrao img{
-  padding-top: 6%;
-  width: 17%; 
-  max-width: 400px; 
-  height: auto; 
-  position: absolute;
-  bottom: 5%;
-  right: 0%;    
-}
-
 #home {
-  background-image: url(imagens/imagem-home/italian\ restaurant\ \(Apresentação\)\ \(3\).png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
+  padding-top: 20px;
   width: 100%;
+  height: 97vh; 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--cor-fundo);
 }
 
-#home .centro {
-  text-align: center;
-  max-width: 1200px;
+.carrossel {
+  width: 96%;
+  max-width: 3000px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carrossel-track {
+  display: flex;
   width: 100%;
+  height: 100%;
+  animation: slide 30s infinite;
 }
 
-#home .centro .chapeu img{
-  width: 150px;
+.carrossel-track img {
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-#home .centro h2{
-  font-size: 18px;
-  padding: 10px;
+@keyframes slide {
+  0% { transform: translateX(0%); }
+  33% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+  100% { transform: translateX(0%); }
 }
 
-#home .centro h1{
-  font-size: 85px;
-}
-
-#home .centro h3{
-  margin: 20px;
-}
-
-#home .centro h3 span{
-  background-color: darkgreen;
-  color: white;
-  padding: 10px;
-}
-
-#home .centro h4{
-  padding: 20px;
-  font-size: 18px;
-}
-
-#home button{
-  background-color: #9b050f;
-  color: white;
-  padding: 10px;
-  margin: 30px 50px 10px 50px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#home button:hover{
-  transform: scale(1.05);
+#home h1{
+  color: black;
+  z-index: 999;
+  justify-content: center;
+  margin: auto;
 }
 
 /*SECTION INSTA*/
 #insta{
-  background-color: #FFF3E6;
+  background-color: var(--cor-fundo);
   padding: 4% 0;
 }
 
@@ -160,20 +155,20 @@ nav a:hover {
 .titulo h2 {
   font-size: 14px;
   font-weight: 500;
-  color: #4F2C1D;
+  color: var(--cor-secundaria);
 }
 
 .titulo h1 {
   font-size: 56px;
-  color: #4F2C1D;
+  color: var(--cor-secundaria);
   padding-bottom: 25px;
 }
 
 .titulo button {
-  color: white;
+  color: var(--cor-fonte);
   padding: 10px 22px;
-  border: 1px solid #4F2C1D;
-  background-color: maroon;
+  border: 1px solid var(--cor-secundaria);
+  background-color: var(--cor-primaria);
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
@@ -225,7 +220,7 @@ nav a:hover {
   background-color: rgba(0, 0, 0, 0.568);
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
-  color: white;
+  color: var(--cor-fonte);
 
   display: flex;
   align-items: center;
@@ -243,13 +238,13 @@ nav a:hover {
 
 /*SECTION RESERVAS*/
 #reserva{
-  background-color: #FFF3E6;
+  background-color: var(--cor-fundo);
   padding-bottom: 8%;
 }
 
 #reserva h1{
   font-size: 27px;
-  color: #4F2C1D;
+  color: var(--cor-secundaria);
   text-align: center;
   padding: 20px;
 }
@@ -263,10 +258,10 @@ nav a:hover {
 }
 
 #reserva .localizacao button{
-  color: white;
+  color: var(--cor-fonte);
   padding: 12px 22px;
   border: none;
-  background-color: maroon;
+  background-color: var(--cor-primaria);
   font-weight: 700;
   cursor: pointer;
   transition: 0.3s ease-in;
@@ -280,10 +275,10 @@ nav a:hover {
   display: flex;
   margin: auto;
   
-  color: white;
+  color: var(--cor-fonte);
   padding: 12px 22px;
   border: none;
-  background-color: maroon;
+  background-color: var(--cor-primaria);
   font-weight: 700;
   cursor: pointer;
   transition: 0.3s ease-in;
