@@ -3,7 +3,7 @@
   --cor-secundaria: #4F2C1D;
   --cor-destaque: #a77813;
   --cor-fonte: #ffffff;
-  --cor-fundo: #fff3e6cb;
+  --cor-fundo: #fffafa;
 }
 
 * {
@@ -17,8 +17,7 @@ button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
-/*HEADER*/
+/* HEADER */
 header {
   position: absolute;
   top: 3%;
@@ -99,7 +98,7 @@ nav a:hover {
   color: var(--cor-destaque);
 }
 
-/*SECTION HOME*/
+/* SECTION HOME */
 #home {
   padding-top: 20px;
   width: 100%;
@@ -190,191 +189,6 @@ nav a:hover {
   border: var(--cor-destaque) solid 2px;
 }
 
-/*SECTION INSTA*/
-#insta {
-  background-color: var(--cor-fundo);
-  padding: 4% 0;
-}
-
-.titulo {
-  text-align: center;
-  padding-bottom: 3%;
-}
-
-.titulo h2 {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--cor-secundaria);
-}
-
-.titulo h1 {
-  font-size: 56px;
-  color: var(--cor-secundaria);
-  padding-bottom: 25px;
-}
-
-.titulo button {
-  color: var(--cor-fonte);
-  padding: 10px 22px;
-  border: 1px solid var(--cor-secundaria);
-  background-color: var(--cor-primaria);
-  border-radius: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease-in;
-}
-
-.titulo button:hover {
-  transform: scale(1.05);
-}
-
-/*fotos do insta*/
-.fotos-insta {
-  text-align: center;
-}
-
-.fotos-insta .linha {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 80%;
-  max-width: 80%;
-  margin: auto;
-  gap: 8px;
-  padding: 4px;
-}
-
-.fotos-insta img {
-  width: 100%;
-  max-width: 250px;
-  cursor: pointer;
-  display: flex;
-}
-
-.fotos-insta .imagem {
-  position: relative;
-  display: inline-block;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.568);
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  color: var(--cor-fonte);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-}
-
-.overlay i {
-  text-align: center;
-}
-
-.imagem:hover .overlay {
-  opacity: 1;
-}
-
-/*SECTION RESERVAS*/
-#reserva {
-  background-color: var(--cor-fundo);
-  padding: 5% 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-#reserva .texto {
-  max-width: 50%;
-  padding: 40px;
-  text-align: left;
-  flex: 1 1 400px;
-  text-align: center;
-}
-
-#reserva .texto h2 {
-  font-size: 16px;
-  color: #a77813;
-  font-weight: 300;
-  margin-bottom: 10px;
-}
-
-#reserva .texto h1 {
-  font-size: 38px;
-  color: var(--cor-secundaria);
-  font-weight: 900;
-  margin-bottom: 20px;
-}
-
-#reserva .texto p {
-  color: rgba(0, 0, 0, 0.7);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.5;
-  margin-bottom: 30px;
-}
-
-.form-reserva {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.form-reserva input,
-.form-reserva select,
-.form-reserva button {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  font-family: 'Verdana', sans-serif;
-}
-
-.form-reserva button {
-  background-color: var(--cor-primaria);
-  color: var(--cor-fonte);
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.form-reserva button:hover {
-  background-color: var(--cor-destaque);
-}
-
-#reserva .quadrado {
-  max-width: 50%;
-  height: 100%;
-  background-color: white;
-  border-radius: 12px 0 0 12px;
-  overflow: hidden;
-  flex: 1 1 400px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-#reserva img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-}
-
-
 /* SECTION SOBRE NÓS */
 .main {
   background-color: var(--cor-fundo);
@@ -460,17 +274,273 @@ nav a:hover {
   background-color: var(--cor-destaque);
 }
 
-#rodape{
+/* SECTION PROMOÇÕES */
+#promocoes {
+  background-color: var(--cor-fundo);
+  text-align: center;
+  width: 100%;
+  padding: 80px 0;
+}
+
+#promocoes h1 {
+  font-size: 60px;
+  margin-top: 15px;
+  color: var(--cor-secundaria);
+}
+
+#promocoes .conteiner {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  padding-bottom: 20px;
+}
+
+#promocoes .menu {
+  text-align: center;
+  width: 250px;
+  height: 380px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px;
+  color: #000000;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.404);
+}
+
+#promocoes .menu img {
+  width: 95%;
+  border-radius: 20px;
+  padding-top: 8px;
+  height: 250px;
+  padding-bottom: 10px;
+  object-fit: cover;
+  display: block;
+}
+
+#promocoes .menu h3 {
+  padding-top: 8px;
+  font-size: 18px;
+}
+
+#promocoes .menu p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#promocoes .botao_inicial {
+  margin-top: 30px;
+}
+
+#promocoes button {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 9px;
+  margin-top: 35px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+#promocoes button:hover {
+  transform: scale(1.05);
+}
+
+/* SECTION INSTA */
+#insta {
+  background-color: var(--cor-fundo);
+  padding: 4% 0;
+}
+
+.titulo {
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+.titulo h2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cor-secundaria);
+}
+
+.titulo h1 {
+  font-size: 56px;
+  color: var(--cor-secundaria);
+  padding-bottom: 25px;
+}
+
+.titulo button {
+  color: var(--cor-fonte);
+  padding: 10px 22px;
+  border: 1px solid var(--cor-secundaria);
+  background-color: var(--cor-primaria);
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+.titulo button:hover {
+  transform: scale(1.05);
+}
+
+.fotos-insta {
+  text-align: center;
+}
+
+.fotos-insta .linha {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  max-width: 80%;
+  margin: auto;
+  gap: 8px;
+  padding: 4px;
+}
+
+.fotos-insta img {
+  width: 100%;
+  max-width: 250px;
+  cursor: pointer;
+  display: flex;
+}
+
+.fotos-insta .imagem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.568);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  color: var(--cor-fonte);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.overlay i {
+  text-align: center;
+}
+
+.imagem:hover .overlay {
+  opacity: 1;
+}
+
+/* SECTION RESERVAS */
+#reserva {
+  background-color: var(--cor-fundo);
+  padding: 5% 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#reserva .texto {
+  max-width: 40%;
+  padding: 40px;
+  text-align: center;
+  flex: 1 1 400px;
+  margin: auto;
+}
+
+#reserva .texto h2 {
+  font-size: 16px;
+  color: #a77813;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+#reserva .texto h1 {
+  font-size: 38px;
+  color: var(--cor-secundaria);
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+#reserva .texto p {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.form-reserva {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form-reserva input,
+.form-reserva select,
+.form-reserva button {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: 'Verdana', sans-serif;
+}
+
+.form-reserva button {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fonte);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.form-reserva button:hover {
+  background-color: var(--cor-destaque);
+}
+
+#reserva .quadrado {
+  max-width: 50%;
+  height: 100%;
+  background-color: white;
+  border-radius: 12px 0 0 12px;
+  overflow: hidden;
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#reserva img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* RODAPÉ */
+#rodape {
   padding-top: 100px;
   background-color: var(--cor-fundo);
 }
 
-#rodape .conteudo{
+#rodape .conteudo {
   width: 100%;
   height: 150px;
   background-color: var(--cor-secundaria);
 }
 
-#rodape .conteudo P{
+#rodape .conteudo p {
   color: white;
 }
