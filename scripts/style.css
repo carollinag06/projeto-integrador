@@ -1,23 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
-  --cor-primaria: #800000;
-  --cor-secundaria: #4F2C1D;
-  --cor-destaque: #a77813;
-  --cor-fonte: #ffffff;
-  --cor-fundo: #fffafa;
+  --cor-primaria: #8B0000;
+  --cor-secundaria: #5A3D28;
+  --cor-destaque: #D4A018;
+  --cor-fonte: #FFFFFF;
+  --cor-fundo: #F5F5F5;
+
+  --fonte-serif: "Playfair Display", serif;
+  --font-sans-serif: "Montserrat", sans-serif;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: var(--fonte-serif);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 button {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: var(--font-sans-serif);
 }
 
-/* HEADER */
+a, button{
+  cursor: pointer;
+}
+/* ========================== HEADER ========================== */
+
 header {
   position: absolute;
   top: 3%;
@@ -98,7 +112,8 @@ nav a:hover {
   color: var(--cor-destaque);
 }
 
-/* SECTION HOME */
+/* ========================== HOME ========================== */
+
 #home {
   padding-top: 20px;
   width: 100%;
@@ -189,14 +204,15 @@ nav a:hover {
   border: var(--cor-destaque) solid 2px;
 }
 
-/* SECTION SOBRE NÓS */
+/* ========================== SOBRE NÓS ========================== */
+
 .main {
   background-color: var(--cor-fundo);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 90vh;
+  padding: 100px 0 60px 0;
 }
 
 .col1 {
@@ -241,7 +257,7 @@ nav a:hover {
 }
 
 .col2 h1 {
-  font-size: 34px;
+  font-size: 36px;
   color: var(--cor-secundaria);
 }
 
@@ -252,10 +268,13 @@ nav a:hover {
 }
 
 .col2 p {
-  text-align: justify;
+  font-family: var(--font-sans-serif);
+  text-align: center;
   margin: 20px 0;
-  font-size: 16px;
+  font-size: 15px;
   color: #333;
+  font-weight: 500;
+  padding: 0 10px;
 }
 
 .col2 button {
@@ -274,7 +293,8 @@ nav a:hover {
   background-color: var(--cor-destaque);
 }
 
-/* SECTION PROMOÇÕES */
+/* ========================== PROMOÇÕES ========================== */
+
 #promocoes {
   background-color: var(--cor-fundo);
   text-align: center;
@@ -348,7 +368,8 @@ nav a:hover {
   transform: scale(1.05);
 }
 
-/* SECTION INSTA */
+/* ========================== INSTAGRAM ========================== */
+
 #insta {
   background-color: var(--cor-fundo);
   padding: 4% 0;
@@ -440,7 +461,8 @@ nav a:hover {
   opacity: 1;
 }
 
-/* SECTION RESERVAS */
+/* ========================== RESERVAS ========================== */
+
 #reserva {
   background-color: var(--cor-fundo);
   padding: 5% 0;
@@ -453,7 +475,7 @@ nav a:hover {
 #reserva .texto {
   max-width: 40%;
   padding: 40px;
-  text-align: center;
+  text-align: justify;
   flex: 1 1 400px;
   margin: auto;
 }
@@ -474,10 +496,11 @@ nav a:hover {
 
 #reserva .texto p {
   color: rgba(0, 0, 0, 0.7);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   line-height: 1.5;
   margin-bottom: 30px;
+  font-family: var(--font-sans-serif);
 }
 
 .form-reserva {
@@ -529,18 +552,58 @@ nav a:hover {
   display: block;
 }
 
-/* RODAPÉ */
+/* ========================== RODAPÉ ========================== */
+
 #rodape {
-  padding-top: 100px;
-  background-color: var(--cor-fundo);
-}
-
-#rodape .conteudo {
-  width: 100%;
-  height: 150px;
   background-color: var(--cor-secundaria);
+  color: var(--cor-fonte);
+  padding: 30px 0 20px;
 }
 
-#rodape .conteudo p {
-  color: white;
+#rodape p{
+  font-family: var(--font-sans-serif);
 }
+
+.container-rodape {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.coluna {
+  flex: 1 1 300px;
+}
+
+.coluna h2,
+.coluna h3 {
+  color: var(--cor-destaque);
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+.coluna p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.redes-sociais a {
+  color: var(--cor-fonte);
+  margin-right: 12px;
+  font-size: 22px;
+  transition: color 0.3s ease-in-out;
+}
+
+.redes-sociais a:hover {
+  color: var(--cor-destaque);
+}
+
+.copy {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--cor-fonte);
+}
+

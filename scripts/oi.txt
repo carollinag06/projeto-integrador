@@ -1,0 +1,5 @@
+  --cor-primaria: #800000;
+  --cor-secundaria: #4F2C1D;
+  --cor-destaque: #a77813;
+  --cor-fonte: #ffffff;
+  --cor-fundo: #fffafa;

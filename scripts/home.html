@@ -8,15 +8,17 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="shortcut icon" href="imagens/imagem-home/italian restaurant chapeu.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
   <header>
     <nav>
-      <h1>Sapori D'Italia</h1>
+      <a href="home.html"><h1>Sapori D'Italia</h1></a>
       <ul>
         <li><a href="#home">Home</a></li>
-        <li><a href="#menu">Menu</a></li>
+        <li><a href="cardapio.html" target="_blank">Menu</a></li>
         <li><a href="#sobre-nos">Sobre-nos</a></li>
       </ul>
     </nav>
@@ -35,8 +37,8 @@
       <h1>O verdadeiro sabor da Itália em cada prato!</h1>
       <p>Sapori d'Italia um otimo lugar para voce desfrutar de boa comida e exelentes vinhos, com execelente serviço, em
         um ambiente confortavel </p>
-      <a href="reserva.html"><button>RESERVE JÁ</button></a>
-      <a href="reserva.html"><button>CARDAPIO</button></a>
+      <a href="#reserva"><button>RESERVE JÁ</button></a>
+      <a href="cardapio.html" target="_blank"><button>CARDAPIO</button></a>
     </div>
   </section>
 
@@ -86,7 +88,34 @@
     <a href="#" class="botao"><button>VEJA NOSSO CARDÁPIO COMPLETO</button></a>
 
   </section>
-  
+
+  <section id="reserva">
+    <div class="texto">
+      <h2>RESERVAS</h2>
+      <h1>RESERVE SUA MESA</h1>
+      <p>
+        Você pode reservar uma mesa on-line facilmente em apenas alguns minutos.
+        Aceitamos reservas para almoço e jantar. Verifique a disponibilidade da sua mesa e reserve agora!
+      </p>
+
+      <form action="#" method="post" class="form-reserva">
+        <input type="text" name="nome" placeholder="Seu nome" required>
+        <input type="date" name="data" required>
+        <input type="time" name="horario" required>
+        <select name="unidade" required>
+          <option value="" disabled selected>Escolha a unidade Vasto</option>
+          <option value="centro">Centro</option>
+          <option value="bairro">Bairro</option>
+        </select>
+        <button type="submit">Reservar</button>
+      </form>
+    </div>
+
+    <div class="quadrado">
+      <img src="imagens/imagens-reservas/Delicious Pasta Pomodoro Recipe to Try.jpg" alt="Imagem de prato italiano">
+    </div>
+  </section>
+
   <section id="insta">
     <div class="titulo">
       <h2>@SAPORIDITALIA</h2>
@@ -163,38 +192,27 @@
     </div>
   </section>
 
-  <section id="reserva">
-    <div class="texto">
-      <h2>RESERVAS</h2>
-      <h1>RESERVE SUA MESA</h1>
-      <p>
-        Você pode reservar uma mesa on-line facilmente em apenas alguns minutos.
-        Aceitamos reservas para almoço e jantar. Verifique a disponibilidade da sua mesa e reserve agora!
-      </p>
-
-      <form action="#" method="post" class="form-reserva">
-        <input type="text" name="nome" placeholder="Seu nome" required>
-        <input type="date" name="data" required>
-        <input type="time" name="horario" required>
-        <select name="unidade" required>
-          <option value="" disabled selected>Escolha a unidade Vasto</option>
-          <option value="centro">Centro</option>
-          <option value="bairro">Bairro</option>
-        </select>
-        <button type="submit">Reservar</button>
-      </form>
+  <footer id="rodape">
+    <div class="container-rodape">
+      <div class="coluna">
+        <h2>Sapori d'Italia</h2>
+        <p>Sabores autênticos da culinária italiana direto para sua mesa.</p>
+      </div>
+      <div class="coluna">
+        <h3>Contato</h3>
+        <p>Email: contato@saporiditalia.com</p>
+        <p>Telefone: (61) 1234-5678</p>
+        <div class="redes-sociais">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
     </div>
-
-    <div class="quadrado">
-      <img src="imagens/imagens-reservas/Delicious Pasta Pomodoro Recipe to Try.jpg" alt="Imagem de prato italiano">
+    <div class="copy">
+      <p>&copy; 2025 Sapori d'Italia. Todos os direitos reservados.</p>
     </div>
-  </section>
-
-  <section id="rodape">
-    <div class="conteudo">
-      <p>© COPYRIGHT 2020 SAPORI D'ITALIA - TODOS OS DIREITOS RESERVADOS.</p>
-    </div>
-  </section>
+  </footer>  
   
 </body>
 
