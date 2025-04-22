@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&display=swap');
+
 
 :root {
   --cor-primaria: #8B0000;
@@ -138,7 +139,7 @@ nav a:hover {
   display: flex;
   width: 100%;
   height: 100%;
-  animation: slide 30s infinite;
+  animation: slide 30s ease-in-out infinite;
 }
 
 .carrossel-track img {
@@ -646,48 +647,39 @@ nav a:hover {
   }
 
   /*home*/
-  #home {
-    flex-direction: column;
-    height: auto;
-    padding-bottom: 80px;
-  }
-
-  #home .text-center {
-    margin-top: 20px;
-  }
-
-  #home .text-center h1 {
-    font-size: 30px;
-  }
-
-  #home .text-center p {
-    font-size: 16px;
-    max-width: 90%;
-  }
-
-  /* sobre-nos*/
-  .main {
-    flex-direction: column;
-    padding: 60px 0 40px 0;
-  }
-
-  .col1,
-  .col2 {
-    width: 100%;
+  #home .text-center h1{
+    font-size: 48px;
     padding: 0 10px;
   }
 
-  .col2 h1{
-    padding-top: 30px;
+  /*sobre-nos*/
+  #sobre-nos .main {
+    flex-direction: column;
+  }
+
+  #sobre-nos .title {
+    text-align: center;
+  }
+
+  #sobre-nos .col1 img {
+    max-width: 90%;
+    height: 250px;
+  }
+
+  #sobre-nos .col1, 
+  #sobre-nos .col2 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #sobre-nos .col2{
+    padding: 0;
+    margin: 0;
+    gap: 0;
   }
 
   .col2 img{
     display: none;
-  }
-
-  .main img {
-    width: 80%;
-    height: auto;
   }
 
   /*promocoes*/
@@ -725,6 +717,7 @@ nav a:hover {
   #reserva .quadrado {
     max-width: 90%;
     padding: 20px;
+    text-align: center;
   }
 
   /*insta*/
