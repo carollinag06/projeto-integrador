@@ -435,6 +435,14 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+
+
+.imagem:hover img {
+  transform: scale(1.1);
 }
 
 .overlay {
@@ -607,3 +615,215 @@ nav a:hover {
   color: var(--cor-fonte);
 }
 
+/* ========================== RESPONSIVIDADE MOBILE ========================== */
+/*header*/
+@media (max-width: 890px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 16px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 0;
+  }
+
+  header h1 {
+    font-size: 28px;
+  }
+
+  header button {
+    margin: 10px 0 0 0;
+    width: 100%;
+  }
+
+  /*home*/
+  #home {
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 80px;
+  }
+
+  #home .text-center {
+    margin-top: 20px;
+  }
+
+  #home .text-center h1 {
+    font-size: 30px;
+  }
+
+  #home .text-center p {
+    font-size: 16px;
+    max-width: 90%;
+  }
+
+  /* sobre-nos*/
+  .main {
+    flex-direction: column;
+    padding: 60px 0 40px 0;
+  }
+
+  .col1,
+  .col2 {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .col2 h1{
+    padding-top: 30px;
+  }
+
+  .col2 img{
+    display: none;
+  }
+
+  .main img {
+    width: 80%;
+    height: auto;
+  }
+
+  /*promocoes*/
+  #promocoes{
+    padding: 20% 0;
+  }
+
+  #promocoes .conteiner {
+    display: flex;
+    gap: 5%;
+  }
+
+  #promocoes .menu {
+    flex: 0 0 auto;
+    width: 28%;
+    height: 320px;
+  }
+ 
+  #promocoes .menu img{
+    width: 100%;
+    height: 70%;
+  }
+
+  #promocoes .menu h3{
+    padding-top: 15%;
+  }
+  
+  /*reservas*/
+  #reserva {
+    flex-direction: column-reverse;
+    padding: 60px 0;
+  }
+
+  #reserva .texto,
+  #reserva .quadrado {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  /*insta*/
+  #insta{
+    padding: 80px 0 150px 0;
+  }
+
+  #insta .fotos-insta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  #insta .imagem {
+    flex: 1 1 calc(34% - 10px); 
+    max-width: calc(34% - 10px); 
+  }
+  
+  #insta .imagem img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #insta .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  #insta .imagem:hover .overlay {
+    opacity: 1;
+  }
+  
+  /*rodape*/
+  #rodape .container-rodape {
+    align-items: center;
+    text-align: center;
+  }
+
+  .coluna {
+    margin-bottom: 10px;
+  }
+}
+
+/* Menu mobile */
+.menu-checkbox {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--cor-fonte);
+  margin-left: auto;
+}
+
+@media (max-width: 890px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--cor-secundaria);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 20px 0;
+    z-index: 100;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .menu-checkbox:checked ~ .nav-links {
+    display: flex;
+  }
+
+  .nav-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .nav-bar h1 {
+    margin-bottom: 10px;
+  }
+
+  .nav-bar button {
+    display: none;
+  }
+}
