@@ -686,6 +686,12 @@ nav a:hover {
   /*promocoes*/
   #promocoes{
     padding: 15% 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  #promocoes h1{
+    font-size: 48px;
   }
 
   #promocoes .conteiner {
@@ -697,6 +703,7 @@ nav a:hover {
     flex: 0 0 auto;
     width: 28%;
     height: 250px;
+    box-sizing: border-box;
   }
  
   #promocoes .menu img{
@@ -706,6 +713,7 @@ nav a:hover {
 
   #promocoes .menu h3{
     padding-top: 25%;
+    font-size: 16px;
   }
   
   /*reservas*/
