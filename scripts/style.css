@@ -429,6 +429,7 @@ nav a:hover {
   max-width: 250px;
   cursor: pointer;
   display: flex;
+  transition: 0.3s ease-in-out;
 }
 
 .fotos-insta .imagem {
@@ -440,10 +441,8 @@ nav a:hover {
   border-radius: 10px;
 }
 
-
-
 .imagem:hover img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .overlay {
@@ -490,9 +489,9 @@ nav a:hover {
 }
 
 #reserva .texto h2 {
-  font-size: 16px;
+  font-size: 18px;
   color: #a77813;
-  font-weight: 300;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 
@@ -653,8 +652,10 @@ nav a:hover {
   }
 
   /*sobre-nos*/
+
   #sobre-nos .main {
     flex-direction: column;
+    overflow-x: hidden;
   }
 
   #sobre-nos .title {
@@ -684,7 +685,7 @@ nav a:hover {
 
   /*promocoes*/
   #promocoes{
-    padding: 20% 0;
+    padding: 15% 0;
   }
 
   #promocoes .conteiner {
@@ -695,16 +696,16 @@ nav a:hover {
   #promocoes .menu {
     flex: 0 0 auto;
     width: 28%;
-    height: 320px;
+    height: 250px;
   }
  
   #promocoes .menu img{
     width: 100%;
-    height: 70%;
+    height: 50%;
   }
 
   #promocoes .menu h3{
-    padding-top: 15%;
+    padding-top: 25%;
   }
   
   /*reservas*/
@@ -741,6 +742,7 @@ nav a:hover {
     height: auto;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
   }
   
   #insta .overlay {

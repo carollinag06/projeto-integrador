@@ -122,7 +122,6 @@ header {
   width: 20rem;
   height: 25rem;
   border-radius: 20px 20px 20px 20px;
-
 }
 
 .menu-op img {
@@ -131,7 +130,6 @@ header {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(119, 119, 119) 0px 0px 0px 3px;
   border-radius: 20px 20px 20px 20px;
 }
-
 
 .menu-op1 {
   background-color: #fae6d1;
@@ -147,6 +145,7 @@ header {
   margin: 15px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(119, 119, 119) 0px 0px 0px 3px;
   border-radius: 20px 20px 20px 20px;
+  display: flex;
 }
 
 
@@ -164,6 +163,7 @@ header {
   margin: 15px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(119, 119, 119) 0px 0px 0px 3px;
   border-radius: 20px 20px 20px 20px;
+  display: flex;
 }
 
 .menu-op3 {
