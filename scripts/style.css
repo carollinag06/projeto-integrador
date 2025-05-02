@@ -618,10 +618,6 @@ nav a:hover {
 /* ========================== RESPONSIVIDADE MOBILE ========================== */
 /*header*/
 @media (max-width: 890px) {
-  *{
-    overflow-x: hidden;
-  }
-
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -665,7 +661,7 @@ nav a:hover {
   #sobre-nos .title {
     text-align: center;
   }
-
+  
   #sobre-nos .col1 img {
     max-width: 90%;
     height: 250px;
