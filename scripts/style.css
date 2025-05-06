@@ -52,9 +52,10 @@ header h1 {
 }
 
 header button {
+  max-height: 34px;
   justify-content: center;
   color: var(--cor-fonte);
-  padding: 8px 10px;
+  padding: 1px 10px;
   border: 1px solid var(--cor-secundaria);
   background-color: var(--cor-primaria);
   border-radius: 5px;
@@ -692,11 +693,19 @@ nav a:hover {
 
   #promocoes h1{
     font-size: 48px;
+    margin-bottom: 50px;
   }
 
   #promocoes .conteiner {
     display: flex;
+    flex-direction: column;
     gap: 5%;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    padding-bottom: 20px;
+    margin: auto;align-items: center;
   }
 
   #promocoes .menu {
@@ -704,15 +713,21 @@ nav a:hover {
     width: 28%;
     height: 250px;
     box-sizing: border-box;
+
+
+    text-align: center;
+    width: 250px;
+    height: 380px;
+    border-radius: 20px;
+    padding: 15px;
   }
  
   #promocoes .menu img{
     width: 100%;
-    height: 50%;
   }
 
   #promocoes .menu h3{
-    padding-top: 25%;
+    padding-top: 10%;
     font-size: 16px;
   }
   
