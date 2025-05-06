@@ -52,7 +52,7 @@ header h1 {
 }
 
 header button {
-  max-height: 34px;
+  max-height: 30px;
   justify-content: center;
   color: var(--cor-fonte);
   padding: 1px 10px;
@@ -639,6 +639,7 @@ nav a:hover {
 
   header h1 {
     font-size: 28px;
+    margin-top: -40px;
   }
 
   header button {
@@ -648,8 +649,12 @@ nav a:hover {
 
   /*home*/
   #home .text-center h1{
-    font-size: 48px;
+    font-size: 36px;
     padding: 0 10px;
+  }
+
+  #home p{
+    display: none;
   }
 
   /*sobre-nos*/
@@ -713,13 +718,9 @@ nav a:hover {
     width: 28%;
     height: 250px;
     box-sizing: border-box;
-
-
     text-align: center;
     width: 250px;
     height: 380px;
-    border-radius: 20px;
-    padding: 15px;
   }
  
   #promocoes .menu img{
@@ -803,6 +804,7 @@ nav a:hover {
   cursor: pointer;
   color: var(--cor-fonte);
   margin-left: auto;
+  margin-top: 15px;
 }
 
 @media (max-width: 890px) {
@@ -816,10 +818,10 @@ nav a:hover {
     width: 100%;
     background-color: var(--cor-secundaria);
     position: absolute;
-    top: 60px;
-    left: 0;
+    top: 55px;
+    right: 0;
     padding: 20px 0;
-    z-index: 100;
+    z-index: 999;
   }
 
   .nav-links li {
