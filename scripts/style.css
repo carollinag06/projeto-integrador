@@ -649,12 +649,19 @@ nav a:hover {
 
   /*home*/
   #home .text-center h1{
-    font-size: 36px;
+    font-size: 210%;
     padding: 0 10px;
   }
 
   #home p{
     display: none;
+  }
+
+  #home .text-center button{
+    margin-top: 40px;
+    border: none;
+    background-color: var(--cor-destaque);
+    transition: 0s;
   }
 
   /*sobre-nos*/
