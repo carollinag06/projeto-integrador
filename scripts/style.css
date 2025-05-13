@@ -755,7 +755,7 @@ nav a:hover {
 
   /*insta*/
   #insta{
-    padding: 80px 0 150px 0;
+    padding: 80px 0 140px 0;
   }
 
   #insta .fotos-insta {
@@ -766,7 +766,7 @@ nav a:hover {
   
   #insta .imagem {
     flex: 1 1 calc(34% - 10px); 
-    max-width: calc(34% - 10px); 
+    max-width: calc(34% - 10px);
   }
   
   #insta .imagem img {
