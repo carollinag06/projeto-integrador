@@ -1,162 +1,323 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Sapori D'Italia</title>
     <link rel="stylesheet" href="style-cardapio.css">
-    <link rel="shortcut icon" href="imagens/imagem-home/italian restaurant chapeu.png" type="image/x-icon">
-    <title>Cardapio - Sapori d'Italia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
 </head>
-
 <body>
-
-    <nav class="under-banner">
-        <ul>
-            <li><a href="#entradas">Entradas</a></li>
-            <li><a href="#massas">Massas</a></li>
-            <li><a href="#sobremesas">Sobremesas</a></li>
-        </ul>
-    </nav>
+    <header>
+        <h1><a href="home.html">Sapori D'Italia</a></h1>
+        <nav>
+            <ul>
+                <li><a href="#entradas">Entradas</a></li>
+                <li><a href="#massas">Massas</a></li>
+                <li><a href="#sobremesas">Sobremesas</a></li>
+                <li><a href="#bebidas">Bebidas</a></li>
+                <li><a href="reserva.html">Reserva</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-        <section id="entradas">
-            <h1 id="Massas"
-                style="text-align: center; line-height: 10rem;  font-size: 56px; color: #4F2C1D; padding-bottom: 25px;">
-                ENTRADAS</h1>
-            <div class="menu">
-                <div class="menu-op">
-                    <img src="imagens/imagens-cardapio/entradas/arancini_di_riso_t.jpg" alt="Pesto-Shrimp-Pasta">
+        <section id="entradas" class="menu-categoria">
+            <h2>Entradas</h2>
+            <div class="prato menu-op">
+                <img src="assets/pratos/entradas/arancini_di_riso_t.jpg" alt="Arancini di riso">
+                <div>
                     <h3>ARANCINI DI RISO</h3>
-                    <p>Ingredientes principais: Arroz arbório, queijo mussarela ou carne, farinha de rosca, ovos.</p>
-                    <p class="price">R$ 35,00</p>
+                    <p>Bolinhas de risoto recheadas com muçarela de búfala e molho pomodoro.</p>
+                    <p>R$ 35,00</p>
                 </div>
-                <div class="menu-op1">
-                    <img src="imagens/imagens-cardapio/entradas/bruschetta_al_pomodoro.jpg" alt="food">
-                    <h3>BRUSCHETTA AL POMODORO</h3>
-                    <p>Ingredientes principais: Pão rústico, tomate, alho, manjericão, azeite de oliva, sal.</p>
-                    <p class="price">R$ 25,00</p>
+            </div>
+            <div class="prato menu-op">
+                <img src="assets/pratos/entradas/bruschetta_al_pomodoro.jpg" alt="Bruschetta">
+                <div>
+                    <h3>BRUSCHETTA CLASSICA</h3>
+                    <p>Pão italiano crocante com tomate, manjericão e azeite de oliva.</p>
+                    <p>R$ 25,00</p>
                 </div>
-                <div class="menu-op2">
-                    <img src="imagens/imagens-cardapio/entradas/caprese_salad.jpeg" alt="food">
-                    <h3>CAPRESE SALAD</h3>
-                    <p>Ingredientes principais: Tomate, mussarela de búfala, manjericão, azeite de oliva, sal, pimenta.
-                    </p>
-                    <p class="price"> R$ 35,00</p>
+            </div>
+            <div class="prato menu-op">
+                <img src="assets/pratos/entradas/caprese_salad.jpeg" alt="Caprese">
+                <div>
+                    <h3>CAPRESE</h3>
+                    <p>Salada de tomate, muçarela de búfala e pesto de manjericão.</p>
+                    <p>R$ 35,00</p>
                 </div>
-                <div class="menu-op3">
-                    <img src="imagens/imagens-cardapio/entradas/carpaccio_di_manzo.jpg" alt="food">
-                    <h3>CARPACCIO DI MANZO</h3>
-                    <p>Ingredientes principais: Filé mignon cru, azeite de oliva, limão, rúcula, queijo parmesão.</p>
-                    <p class="price">R$ 60,00</p>
+            </div>
+            <div class="prato menu-op">
+                <img src="assets/pratos/entradas/focaccia_bread.jpg" alt="Focaccia">
+                <div>
+                    <h3>FOCACCIA AL ROSMARINO</h3>
+                    <p>Pão artesanal com alecrim e sal grosso.</p>
+                    <p>R$ 20,00</p>
                 </div>
-                <div class="menu-op4">
-                    <img src="imagens/imagens-cardapio/entradas/focaccia_bread.jpg" alt="food">
-                    <h3>FOCACCIA</h3>
-                    <p>Ingredientes principais: Farinha de trigo, azeite de oliva, fermento, alecrim, sal grosso.</p>
-                    <p class="price">R$ 20,00</p>
+            </div>
+            <div class="prato menu-op">
+                <img src="assets/pratos/entradas/polenta_frita.jpg" alt="Polenta Frita">
+                <div>
+                    <h3>POLENTA FRITA</h3>
+                    <p>Bastões crocantes de polenta com parmesão.</p>
+                    <p>R$ 15,00</p>
                 </div>
-                <div class="menu-op5">
-                    <img src="imagens/imagens-cardapio/entradas/polpette_al_sugo.jpg" alt="food">
-                    <h3>POLPETTE AL SUGO</h3>
-                    <p>Ingredientes principais: Carne moída, pão amanhecido, alho, queijo parmesão, molho de tomate.</p>
-                    <p class="price">R$ 40,00</p>
+            </div>
+            <div class="prato menu-op">
+                <img src="assets/pratos/entradas/insalata_verde.jpg" alt="Salada Verde">
+                <div>
+                    <h3>INSALATA VERDE</h3>
+                    <p>Mix de folhas verdes com molho especial da casa.</p>
+                    <p>R$ 15,00</p>
+                </div>
+            </div>
+            <div class="prato menu-op">
+                <img src="assets/pratos/entradas/carpaccio_di_manzo.jpg" alt="Carpaccio">
+                <div>
+                    <h3>CARPACCIO</h3>
+                    <p>Finas fatias de carne temperadas com rúcula e parmesão.</p>
+                    <p>R$ 40,00</p>
+                </div>
+            </div>
+            <div class="prato menu-op">
+                <img src="assets/pratos/entradas/panzanella.jpg" alt="Panzanella">
+                <div>
+                    <h3>PANZANELLA</h3>
+                    <p>Salada toscana com pão italiano, tomate e cebola roxa.</p>
+                    <p>R$ 20,00</p>
+                </div>
+            </div>
+            <div class="prato menu-op">
+                <img src="assets/pratos/entradas/suppli_alla_romana.jfif" alt="Supplì alla Romana">
+                <div>
+                    <h3>SUPPLI ALLA ROMANA</h3>
+                    <p>Bolinhos de arroz recheados com queijo e fritos.</p>
+                    <p>R$ 15,00</p>
                 </div>
             </div>
         </section>
 
-        <section id="massas">
-            <h1 id="Massas"
-                style="text-align: center; line-height: 10rem;  font-size: 56px; color: #4F2C1D; padding-bottom: 25px;">
-                MASSAS</h1>
-            <div class="menu">
-                <div class="menu-op">
-                    <img src="imagens/imagens-cardapio/spaghetti_carbonara.webp" alt="Pesto-Shrimp-Pasta">
-                    <h3>SPAGHETTI CARBONARA</h3>
-                    <p>Ingredientes principais: Espaguete, ovos, queijo parmesão, pancetta.</p>
-                    <p class="price">R$ 40,00</p>
-                </div>
-                <div class="menu-op1">
-                    <img src="imagens/imagens-cardapio/penne_arrabbiata.jpg" alt="food">
-                    <h3>PENNE ARRABBIATA</h3>
-                    <p>Ingredientes principais: Penne, molho de tomate, alho, pimenta-calabresa, azeite de oliva,
-                        manjericão.</p>
-                    <p class="price">R$ 35,00</p>
-                </div>
-                <div class="menu-op2">
-                    <img src="imagens/imagens-cardapio/fettuccine_alfredo.jpg" alt="food">
+        <section id="massas" class="menu-categoria">
+            <h2>Massas</h2>
+            <div class="prato menu-op1">
+                <img src="assets/pratos/massas/fettuccine_alfredo.jpg" alt="Fettuccine Alfredo">
+                <div>
                     <h3>FETTUCCINE ALFREDO</h3>
-                    <p>Ingredientes principais: Fettuccine, creme de leite, manteiga, queijo parmesão, noz-moscada.</p>
-                    <p class="price"> R$ 50,00</p>
+                    <p>Massa artesanal com molho Alfredo cremoso e parmesão.</p>
+                    <p>R$ 50,00</p>
                 </div>
-                <div class="menu-op3">
-                    <img src="imagens/imagens-cardapio/lasagna_tradicional.jpg" alt="food">
-                    <h3>LASAGNA TRADICIONAL</h3>
-                    <p>Ingredientes principais: Massa de lasanha, molho bolonhesa, molho bechamel, queijo mussarela,
-                        queijo parmesão.</p>
-                    <p class="price">R$ 65,00</p>
+            </div>
+            <div class="prato menu-op1">
+                <img src="assets/pratos/massas/lasagna_tradicional.jpg" alt="Lasanha Bolognesa">
+                <div>
+                    <h3>LASAGNA BOLOGNESA</h3>
+                    <p>Clássica lasanha com ragu de carne e molho bechamel.</p>
+                    <p>R$ 65,00</p>
                 </div>
-                <div class="menu-op4">
-                    <img src="imagens/imagens-cardapio/trofie_al_pesto.jpg" alt="food">
-                    <h3>TROFIE AL PESTO</h3>
-                    <p>Ingredientes principais: Trofie (massa artesanal), manjericão, alho, pinoli, queijo parmesão, azeite de oliva.</p>
-                    <p class="price">R$ 50,00</p>
+            </div>
+            <div class="prato menu-op1">
+                <img src="assets/pratos/massas/gnocchi_ao_sugo.jpg" alt="Gnocchi ao Sugo">
+                <div>
+                    <h3>GNOCCHI AO SUGO</h3>
+                    <p>Nhoque de batata com molho de tomate caseiro.</p>
+                    <p>R$ 70,00</p>
                 </div>
-                <div class="menu-op5">
-                    <img src="imagens/imagens-cardapio/ravioli_de_Ricota_e_espinafre.jpeg" alt="food">
-                    <h3>RAVIOLI DE RICOTA E ESPINAFRE</h3>
-                    <p>Ingredientes principais: Massa de ravioli, ricota, espinafre, manteiga, sálvia.</p>
-                    <p class="price">R$ 55,00</p>
+            </div>
+            <div class="prato menu-op1">
+                <img src="assets/pratos/massas/penne_arrabbiata.jpg" alt="Penne Arrabbiata">
+                <div>
+                    <h3>PENNE ARRABBIATA</h3>
+                    <p>Penne ao molho picante de tomate com alho.</p>
+                    <p>R$ 35,00</p>
+                </div> 
+            </div>
+            <div class="prato menu-op1">
+                <img src="assets/pratos/massas/spaghetti_carbonara.webp" alt="Carbonara">
+                <div>
+                    <h3>SPAGHETTI CARBONARA</h3>
+                    <p>Espaguete com pancetta, ovo e parmesão.</p>
+                    <p>R$ 40,00</p>
+                </div>
+            </div>
+            <div class="prato menu-op1">
+                <img src="assets/pratos/massas/ravioli_de_Ricota_e_espinafre.jpeg" alt="Ravioli di Ricotta">
+                <div>
+                    <h3>RAVIOLI DI RICOTTA</h3>
+                    <p>Ravioli recheado com ricota e espinafre ao molho de manteiga e sálvia.</p>
+                    <p>R$ 55,00</p>
+                </div>
+            </div>
+            <div class="prato menu-op1">
+                <img src="assets/pratos/massas/tagliatelle_pesto.jpg" alt="Tagliatelle al Pesto">
+                <div>
+                    <h3>TAGLIATELLE AL PESTO</h3>
+                    <p>Massa com molho pesto de manjericão e pinoli.</p>
+                    <p>R$ 45,00</p>
+                </div>
+            </div>
+            <div class="prato menu-op1">
+                <img src="assets/pratos/massas/tortellini_en_brodo.jpg" alt="Tortellini em Brodo">
+                <div>
+                    <h3>TORTELLINI EM BRODO</h3>
+                    <p>Massa recheada servida em caldo aromático.</p>
+                    <p>R$ 35,00</p>
+                </div>
+            </div>
+            <div class="prato menu-op1">
+                <img src="assets/pratos/massas/farfalle_al_limone.jpg" alt="Farfalle al Limone">
+                <div>
+                    <h3>FARFALLE AL LIMONE</h3>
+                    <p>Massa com molho leve de limão siciliano e creme.</p>
+                    <p>R$ 30,00</p>
                 </div>
             </div>
         </section>
 
-        <section id="sobremesas">
-            <H2 style="text-align: center; line-height: 10rem;  font-size: 56px; color: #4F2C1D; padding-bottom: 25px;">
-                SOBREMESAS</H2>
-            <div class="menu">
-                <div class="menu-op">
-                    <img src="imagens/imagens-cardapio/sobremesas/panna_cotta.jpg" alt="Pesto-Shrimp-Pasta">
-                    <p>PANNA COTTA</p>
-                    <p>Ingredientes principais: Creme de leite, açúcar, gelatina incolor, baunilha, calda de frutas
-                        vermelhas.</p>
-                    <p class="price">R$ 40,00</p>
+        <section id="sobremesas" class="menu-categoria">
+            <h2>Sobremesas</h2>
+            <div class="prato menu-op2">
+                <img src="assets/pratos/sobremesas/tiramisu.jpg" alt="Tiramisu">
+                <div>
+                    <h3>TIRAMISÙ</h3>
+                    <p>Clássica sobremesa italiana com café, creme mascarpone e cacau.</p>
+                    <p>R$ 17,00</p>
                 </div>
-                <div class="menu-op1">
-                    <img src="imagens/imagens-cardapio/sobremesas/cannoli_siciliani.jpg" alt="food">
-                    <p>CANNOLI SICILIANI</p>
-                    <p>Ingredientes principais: Farinha de trigo, vinho branco, açúcar, manteiga, ricota, chocolate ou
-                        frutas cristalizadas.</p>
-                    <p class="price">R$ 20,00</p>
+            </div>
+            <div class="prato menu-op2">
+                <img src="assets/pratos/sobremesas/panna_cotta.jpg" alt="Panna Cotta">
+                <div>
+                    <h3>PANNA COTTA</h3>
+                    <p>Creme cozido com calda de frutas vermelhas.</p>
+                    <p>R$ 30,00</p>
                 </div>
-                <div class="menu-op2">
-                    <img src="imagens/imagens-cardapio/sobremesas/zabaione.jpg" alt="food">
-                    <p>ZABAIONE</p>
-                    <p>Ingredientes principais: Gemas de ovo, açúcar, vinho Marsala.</p>
-                    <p class="price">R$ 30,00</p>
+            </div>
+            <div class="prato menu-op2">
+                <img src="assets/pratos/sobremesas/zeppole.jpeg" alt="Zeppole">
+                <div>
+                    <h3>ZEPPOLE</h3>
+                    <p>Rosquinhas fritas polvilhadas com açúcar e canela.</p>
+                    <p>R$ 15,00</p>
                 </div>
-                <div class="menu-op3">
-                    <img src="imagens/imagens-cardapio/sobremesas/torta_caprese.jpg" alt="food">
-                    <p>TORTA CAPRESE</p>
-                    <p>Ingredientes principais: Chocolate meio amargo, amêndoas moídas, ovos, açúcar, manteiga.</p>
-                    <p class="price">R$ 35,00</p>
+            </div>
+            <div class="prato menu-op2">
+                <img src="assets/pratos/sobremesas/bomboloni.avif" alt="Bomboloni">
+                <div>
+                    <h3>BOMBOLONI</h3>
+                    <p>Donuts italianos recheados com creme.</p>
+                    <p>R$ 15,00</p>
                 </div>
-                <div class="menu-op4">
-                    <img src="imagens/imagens-cardapio/sobremesas/semifreddo.jpg" alt="SEMIFREDDO">
+            </div>
+            <div class="prato menu-op2">
+                <img src="assets/pratos/sobremesas/cannoli_siciliani.jpg" alt="Cannoli Siciliano">
+                <div>
+                    <h3>CANNOLI SICILIANO</h3>
+                    <p>Canudos crocantes recheados com creme de ricota.</p>
+                    <p>R$ 20,00</p>
+                </div>
+            </div>
+            <div class="prato menu-op2">
+                <img src="assets/pratos/sobremesas/torta_di_ricotta.jfif" alt="Torta di Ricotta">
+                <div>
+                    <h3>TORTA DI RICOTTA</h3>
+                    <p>Torta cremosa de ricota com toque de limão.</p>
+                    <p>R$ 20,00</p>
+                </div>
+            </div>
+            <div class="prato menu-op2">
+                <img src="assets/pratos/sobremesas/semifreddo.jpg" alt="Semifreddo">
+                <div>
                     <h3>SEMIFREDDO</h3>
-                    <p>Ingredientes principais: Creme de leite, ovos, açúcar, baunilha, frutas secas ou chocolate.</p>
-                    <p class="price">R$ 30,00</p>
+                    <p>Sobremesa gelada de textura leve e cremosa.</p>
+                    <p>R$ 30,00</p>
                 </div>
-                <div class="menu-op5">
-                    <img src="imagens/imagens-cardapio/sobremesas/Sfogliatella.jpg" alt="food">
-                    <h3> SFOGLIATELLA</h3>
-                    <p>Ingredientes principais: Massa folhada, ricota, açúcar, raspas de laranja, baunilha, semolina.
-                    </p>
-                    <p class="price">R$ 25,00</p>
+            </div>
+            
+        </section>
+
+        <section id="bebidas" class="menu-categoria">
+            <h2>Bebidas</h2>
+            <div class="prato">
+                <img src="assets/pratos/bebidas/limonada_siciliana.jfif" alt="Limonada Siciliana">
+                <div>
+                    <h3>LIMONADA SICILIANA</h3>
+                    <p>Refrescante limonada com toque de hortelã.</p>
+                    <p>R$ 10,00</p>
+                </div>
+            </div>
+            <div class="prato">
+                <img src="assets/pratos/bebidas/suco_laranja.jpg" alt="Suco de Laranja">
+                <div>
+                    <h3>SUCO DE LARANJA</h3>
+                    <p>Suco natural de laranja.</p>
+                    <p>R$ 10,00</p>
+                </div>
+            </div>
+            <div class="prato">
+                <img src="assets/pratos/bebidas/spritz.jpg" alt="Spritz">
+                <div>
+                    <h3>SPRITZ</h3>
+                    <p>Drink italiano com prosecco, Aperol e água com gás.</p>
+                    <p>R$ 25,00</p>
+                </div>
+            </div>
+            <div class="prato">
+                <img src="assets/pratos/bebidas/cafe.webp" alt="Café Expresso">
+                <div>
+                    <h3>CAFÉ EXPRESSO</h3>
+                    <p>Tradicional café italiano encorpado.</p>
+                    <p>R$ 12,00</p>
+                </div>
+            </div>
+            <div class="prato">
+                <img src="assets/pratos/bebidas/capuccino.jpg" alt="Cappuccino">
+                <div>
+                    <h3>CAPPUCCINO</h3>
+                    <p>Café com leite vaporizado e espuma cremosa.</p>
+                    <p>R$ 17,00</p>
+                </div>
+            </div>
+            <div class="prato">
+                <img src="assets/pratos/bebidas/cha_gelado.webp" alt="Chá Gelado">
+                <div>
+                    <h3>CHÁ GELADO</h3>
+                    <p>Chá preto com limão e hortelã.</p>
+                    <p>R$ 12,00</p>
+                </div>
+            </div>
+            <div class="prato">
+                <img src="assets/pratos/bebidas/vinho.webp" alt="Vinho Tinto">
+                <div>
+                    <h3>VINHO TINTO</h3>
+                    <p>Seleção especial de vinhos tintos italianos.</p>
+                    <p>R$ 25,00</p>
                 </div>
             </div>
         </section>
-    </main>
-</body>
 
+    </main>
+
+    <footer id="rodape">
+        <div class="container-rodape">
+          <div class="coluna">
+            <h2>Sapori d'Italia</h2>
+            <p>Sabores autênticos da culinária italiana direto para sua mesa.</p>
+          </div>
+          <div class="coluna">
+            <h3>Contato</h3>
+            <p>Email: contato@saporiditalia.com</p>
+            <p>Telefone: (61) 1234-5678</p>
+            <div class="redes-sociais">
+              <a href="https://carollinag06.github.io/projeto-integrador/scripts/home.html#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://carollinag06.github.io/projeto-integrador/scripts/home.html#"><i class="fa-brands fa-facebook"></i></a>
+              <a href="https://carollinag06.github.io/projeto-integrador/scripts/home.html#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="copy">
+          <p>© 2025 Sapori d'Italia. Todos os direitos reservados.</p>
+        </div>
+      </footer>  
+</body>
 </html>

@@ -45,6 +45,16 @@ header h1 {
   color: white;
 }
 
+header a{
+  color: white;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+header a:hover{
+  color: #5c0000;
+}
+
 header p {
   font-size: 1.2rem;
   font-style: italic;
