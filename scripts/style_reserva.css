@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&display=swap');
+
+:root {
+  --cor-primaria: #8B0000;
+  --cor-secundaria: #5A3D28;
+  --cor-destaque: #D4A018;
+  --cor-fonte: #FFFFFF;
+  --cor-fundo: #F5F5F5;
+  --fonte-serif: "Playfair Display", serif;
+  --font-sans-serif: "Montserrat", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans-serif);
+  
+}
+
+body {
+  background: linear-gradient(to right, #fef9f4, #f4e9dc);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url(imagens/pexels-julius-silver-240301-753639\ \(1\).jpg);
+}
+
+header {
+  color: #fff;
+  padding: 1%;
+  text-align: center;
+}
+
+header h1 {
+  font-family: var(--fonte-serif);
+  font-size: 3rem;
+  margin-bottom: 0.3rem;
+}
+
+header p {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.container {
+  max-width: 750px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.container h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--cor-primaria);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  display: block;
+  color: #5c0000;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #a50000;
+  box-shadow: 0 0 5px rgba(165, 0, 0, 0.2);
+}
+
+button {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: 'Verdana', sans-serif;
+  width: 100%;
+}
+
+button:hover {
+  background: #a50000;
+}
+
+.success-message {
+  margin-top: 2rem;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  .container h2 {
+    font-size: 1.6rem;
+  }
+}

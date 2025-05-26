@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>Sapori d'Italia</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -61,7 +60,7 @@
           <img id="icon" src="imagens/imagens-sobrenos/Pisa.png" alt="Ícone Pisa">
         </div>
         <p>No Sapori d’Italia, unimos tradição e paixão pela culinária italiana. Cada prato é preparado com ingredientes selecionados e muito carinho, proporcionando uma experiência única a cada visita. Venha conhecer o sabor da Itália bem pertinho de você!</p>
-        <a href="#"><button>FAÇA SUA RESERVA</button></a>
+        <a href="#reserva"><button>FAÇA SUA RESERVA</button></a>
       </div>
     </div>
   </section>
@@ -88,7 +87,7 @@
       </div>
     </div>
   
-    <a href="#" class="botao"><button>VEJA NOSSO CARDÁPIO COMPLETO</button></a>
+    <a href="cardapio.html" class="botao"><button>VEJA NOSSO CARDÁPIO COMPLETO</button></a>
 
   </section>
 
@@ -100,19 +99,9 @@
         Você pode reservar uma mesa on-line facilmente em apenas alguns minutos.
         Aceitamos reservas para almoço e jantar. Verifique a disponibilidade da sua mesa e reserve agora!
       </p>
-
-      <form action="#" method="post" class="form-reserva">
-        <input type="text" name="nome" placeholder="Seu nome" required>
-        <input type="date" name="data" required>
-        <input type="time" name="horario" required>
-        <select name="unidade" required>
-          <option value="" disabled selected>Escolha a unidade</option>
-          <option value="centro">Centro</option>
-          <option value="bairro">Bairro</option>
-        </select>
-        <button type="submit">Reservar</button>
-      </form>
+      <a href="reserva.html"><button>RESERVE JÁ</button></a>
     </div>
+    
 
     <div class="quadrado">
       <img src="imagens/imagens-reservas/Delicious Pasta Pomodoro Recipe to Try.jpg" alt="Imagem de prato italiano">
@@ -217,6 +206,16 @@
     </div>
   </footer>  
   
-</body>
+  <script>
+    const form = document.getElementById('reservaForm');
+    const mensagem = document.getElementById('mensagem');
 
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const nome = form.nome.value;
+      mensagem.textContent = `Obrigado, ${nome}! Sua reserva foi enviada com sucesso.`;
+      form.reset();
+    });
+  </script>
+</body>
 </html>

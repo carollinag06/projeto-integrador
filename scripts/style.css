@@ -519,9 +519,7 @@ nav a:hover {
   margin-top: 20px;
 }
 
-.form-reserva input,
-.form-reserva select,
-.form-reserva button {
+#reserva button {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -530,7 +528,7 @@ nav a:hover {
   width: 100%;
 }
 
-.form-reserva button {
+#reserva button {
   background-color: var(--cor-primaria);
   color: var(--cor-fonte);
   border: none;
