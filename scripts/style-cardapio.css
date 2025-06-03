@@ -1,3 +1,15 @@
+:root {
+  --cor-primaria: #8B0000;
+  --cor-secundaria: #5A3D28;
+  --cor-destaque: #D4A018;
+  --cor-fonte: #FFFFFF;
+  --cor-fundo: #F5F5F5;
+
+  --fonte-serif: "Playfair Display", serif;
+  --font-sans-serif: "Montserrat", sans-serif;
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -121,11 +133,6 @@ main {
     padding: 20px;
 }
 
-footer {
-    background-color: rgba(128, 128, 128, 0.5);
-    color: #000000;
-    padding: 30px 0px 20px;
-}
 
 .container-rodape {
     display: flex;
@@ -147,6 +154,59 @@ footer {
     color: var(--cor-fonte);
 }
 
+#rodape {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-fonte);
+  padding: 30px 0 20px;
+}
+
+#rodape p {
+  font-family: var(--font-sans-serif);
+}
+
+.container-rodape {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.coluna {
+  flex: 1 1 300px;
+}
+
+.coluna h2,
+.coluna h3 {
+  color: var(--cor-destaque);
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+.coluna p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.redes-sociais a {
+  color: var(--cor-fonte);
+  margin-right: 12px;
+  font-size: 22px;
+  transition: color 0.3s ease-in-out;
+}
+
+.redes-sociais a:hover {
+  color: var(--cor-destaque);
+}
+
+.copy {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--cor-fonte);
+}
+
 
 @media (max-width: 768px) {
     .prato {
@@ -158,9 +218,32 @@ footer {
         text-align: center;
     }
 
+    header i {
+        display: none;
+    }
+
     nav ul {
-        flex-direction: column;
         gap: 10px;
-        margin-top: 10px;
+        padding-top: 10px;
+    }
+
+    nav li {
+        display: block;
+        text-decoration: underline;
+        font-size: 17px;
+    }
+
+    ul .reserva {
+        display: none;
+    }
+
+    /*rodape*/
+    #rodape .container-rodape {
+        align-items: center;
+        text-align: center;
+    }
+
+    .coluna {
+        margin-bottom: 10px;
     }
 }
