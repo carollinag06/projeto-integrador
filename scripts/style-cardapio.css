@@ -45,6 +45,11 @@ header h1 a:hover {
     color: #D4A018;
 }
 
+header i {
+    font-size: 26px;
+    color: #5A3D28;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -61,6 +66,7 @@ nav ul li a {
 nav ul li a:hover {
     color: #8B0000;
 }
+
 
 main {
     padding: 40px;

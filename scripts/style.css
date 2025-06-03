@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 :root {
@@ -28,9 +28,11 @@ button {
   font-family: var(--font-sans-serif);
 }
 
-a, button{
+a,
+button {
   cursor: pointer;
 }
+
 /* ========================== HEADER ========================== */
 
 header {
@@ -114,6 +116,13 @@ nav a:hover {
   color: var(--cor-destaque);
 }
 
+nav i {
+  position: relative;
+  z-index: 9999;
+}
+
+
+
 /* ========================== HOME ========================== */
 
 #home {
@@ -149,6 +158,9 @@ nav a:hover {
   flex-shrink: 0;
 }
 
+
+
+
 @keyframes slide {
   0% {
     transform: translateX(0%);
@@ -168,7 +180,6 @@ nav a:hover {
 }
 
 #home .text-center {
-  display: flexbox;
   z-index: 999;
   text-align: center;
   position: absolute;
@@ -370,6 +381,97 @@ nav a:hover {
   transform: scale(1.05);
 }
 
+/* ========================== RESERVAS ========================== */
+
+#reserva {
+  background-color: var(--cor-fundo);
+  padding: 5% 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#reserva .texto {
+  max-width: 40%;
+  padding: 40px;
+  text-align: justify;
+  flex: 1 1 400px;
+  margin: auto;
+}
+
+#reserva .texto h2 {
+  font-size: 18px;
+  color: #a77813;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+#reserva .texto h1 {
+  font-size: 38px;
+  color: var(--cor-secundaria);
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+#reserva .texto p {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  font-family: var(--font-sans-serif);
+}
+
+.form-reserva {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+#reserva button {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: 'Verdana', sans-serif;
+  width: 100%;
+}
+
+#reserva button {
+  background-color: var(--cor-primaria);
+  color: var(--cor-fonte);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.form-reserva button:hover {
+  background-color: var(--cor-destaque);
+}
+
+#reserva .quadrado {
+  max-width: 50%;
+  height: 100%;
+  background-color: white;
+  border-radius: 12px 0 0 12px;
+  overflow: hidden;
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#reserva img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+
 /* ========================== INSTAGRAM ========================== */
 
 #insta {
@@ -470,96 +572,6 @@ nav a:hover {
   opacity: 1;
 }
 
-/* ========================== RESERVAS ========================== */
-
-#reserva {
-  background-color: var(--cor-fundo);
-  padding: 5% 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-#reserva .texto {
-  max-width: 40%;
-  padding: 40px;
-  text-align: justify;
-  flex: 1 1 400px;
-  margin: auto;
-}
-
-#reserva .texto h2 {
-  font-size: 18px;
-  color: #a77813;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-#reserva .texto h1 {
-  font-size: 38px;
-  color: var(--cor-secundaria);
-  font-weight: 900;
-  margin-bottom: 20px;
-}
-
-#reserva .texto p {
-  color: rgba(0, 0, 0, 0.7);
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.5;
-  margin-bottom: 30px;
-  font-family: var(--font-sans-serif);
-}
-
-.form-reserva {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-#reserva button {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  font-family: 'Verdana', sans-serif;
-  width: 100%;
-}
-
-#reserva button {
-  background-color: var(--cor-primaria);
-  color: var(--cor-fonte);
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.form-reserva button:hover {
-  background-color: var(--cor-destaque);
-}
-
-#reserva .quadrado {
-  max-width: 50%;
-  height: 100%;
-  background-color: white;
-  border-radius: 12px 0 0 12px;
-  overflow: hidden;
-  flex: 1 1 400px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-#reserva img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-}
-
 /* ========================== RODAPÉ ========================== */
 
 #rodape {
@@ -568,7 +580,7 @@ nav a:hover {
   padding: 30px 0 20px;
 }
 
-#rodape p{
+#rodape p {
   font-family: var(--font-sans-serif);
 }
 
@@ -647,16 +659,16 @@ nav a:hover {
   }
 
   /*home*/
-  #home .text-center h1{
+  #home .text-center h1 {
     font-size: 210%;
     padding: 0 10px;
   }
 
-  #home p{
+  #home p {
     display: none;
   }
 
-  #home .text-center button{
+  #home .text-center button {
     margin-top: 40px;
     border: none;
     background-color: var(--cor-destaque);
@@ -673,36 +685,36 @@ nav a:hover {
   #sobre-nos .title {
     text-align: center;
   }
-  
+
   #sobre-nos .col1 img {
     max-width: 90%;
     height: 250px;
   }
 
-  #sobre-nos .col1, 
+  #sobre-nos .col1,
   #sobre-nos .col2 {
     width: 100%;
     max-width: 100%;
   }
 
-  #sobre-nos .col2{
+  #sobre-nos .col2 {
     padding: 0;
     margin: 0;
     gap: 0;
   }
 
-  .col2 img{
+  .col2 img {
     display: none;
   }
 
   /*promocoes*/
-  #promocoes{
+  #promocoes {
     padding: 15% 0;
     box-sizing: border-box;
     overflow-x: hidden;
   }
 
-  #promocoes h1{
+  #promocoes h1 {
     font-size: 48px;
     margin-bottom: 50px;
   }
@@ -716,7 +728,8 @@ nav a:hover {
     flex-wrap: wrap;
     margin-top: 50px;
     padding-bottom: 20px;
-    margin: auto;align-items: center;
+    margin: auto;
+    align-items: center;
   }
 
   #promocoes .menu {
@@ -728,16 +741,16 @@ nav a:hover {
     width: 250px;
     height: 380px;
   }
- 
-  #promocoes .menu img{
+
+  #promocoes .menu img {
     width: 100%;
   }
 
-  #promocoes .menu h3{
+  #promocoes .menu h3 {
     padding-top: 10%;
     font-size: 16px;
   }
-  
+
   /*reservas*/
   #reserva {
     flex-direction: column-reverse;
@@ -752,7 +765,7 @@ nav a:hover {
   }
 
   /*insta*/
-  #insta{
+  #insta {
     padding: 80px 0 140px 0;
   }
 
@@ -761,12 +774,12 @@ nav a:hover {
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   #insta .imagem {
-    flex: 1 1 calc(34% - 10px); 
+    flex: 1 1 calc(34% - 10px);
     max-width: calc(34% - 10px);
   }
-  
+
   #insta .imagem img {
     width: 100%;
     height: auto;
@@ -774,7 +787,7 @@ nav a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
   }
-  
+
   #insta .overlay {
     position: absolute;
     top: 50%;
@@ -783,11 +796,11 @@ nav a:hover {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   #insta .imagem:hover .overlay {
     opacity: 1;
   }
-  
+
   /*rodape*/
   #rodape .container-rodape {
     align-items: center;
@@ -818,13 +831,18 @@ nav a:hover {
     display: block;
   }
 
+  .menu-mobile {
+    position: absolute;
+    z-index: 100;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
     background-color: var(--cor-secundaria);
     position: absolute;
-    top: 55px;
+    top: 70px;
     right: 0;
     padding: 20px 0;
     z-index: 999;
@@ -835,7 +853,7 @@ nav a:hover {
     padding: 10px 0;
   }
 
-  .menu-checkbox:checked ~ .nav-links {
+  .menu-checkbox:checked~.nav-links {
     display: flex;
   }
 

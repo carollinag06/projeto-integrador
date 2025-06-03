@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-oi
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,26 +9,30 @@ oi
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="shortcut icon" href="imagens/imagem-home/italian restaurant chapeu.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
+  
   <header>
     <nav class="nav-bar">
       <input type="checkbox" id="menu-toggle" class="menu-checkbox">
       <label for="menu-toggle" class="menu-icon">
         <i class="bi bi-list"></i>
       </label>
-    
-      <a href="home.html"><h1>Sapori D'Italia</h1></a>
-    
+
+      <a href="home.html">
+        <h1>Sapori D'Italia</h1>
+      </a>
+
       <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="cardapio.html">Menu</a></li>
         <li><a href="#sobre-nos">Sobre-nos</a></li>
+        <li><a href="cardapio.html">Menu</a></li>
+        <li><a href="#promocoes">Promoções</a></li>
       </ul>
-    
-      <a href="#reserva"><button>Reserva</button></a>
-    </nav>  
+
+      <a href="reserva.html"><button>Reserva</button></a>
+    </nav>
   </header>
 
   <section id="home">
@@ -41,10 +45,10 @@ oi
     </div>
     <div class="text-center">
       <h1>O verdadeiro sabor da Itália em cada prato!</h1>
-      <p>Sapori d'Italia um otimo lugar para voce desfrutar de boa comida e exelentes vinhos, com execelente serviço, em
-        um ambiente confortavel </p>
-      <a href="#reserva"><button>RESERVE JÁ</button></a>
-      <a href="cardapio.html" ><button>CARDAPIO</button></a>
+      <p>Sapori d'Italia um ótimo lugar para você desfrutar de boa comida e excelentes vinhos, com excelente serviço, em
+        um ambiente confortável.</p>
+      <a href="reserva.html"><button>RESERVE JÁ</button></a>
+      <a href="cardapio.html"><button>CARDAPIO</button></a>
     </div>
   </section>
 
@@ -59,7 +63,9 @@ oi
           <h1>QUEM SOMOS</h1>
           <img id="icon" src="imagens/imagens-sobrenos/Pisa.png" alt="Ícone Pisa">
         </div>
-        <p>No Sapori d’Italia, unimos tradição e paixão pela culinária italiana. Cada prato é preparado com ingredientes selecionados e muito carinho, proporcionando uma experiência única a cada visita. Venha conhecer o sabor da Itália bem pertinho de você!</p>
+        <p>No Sapori d’Italia, unimos tradição e paixão pela culinária italiana. Cada prato é preparado com ingredientes
+          selecionados e muito carinho, proporcionando uma experiência única a cada visita. Venha conhecer o sabor da
+          Itália bem pertinho de você!</p>
         <a href="reserva.html"><button>FAÇA SUA RESERVA</button></a>
       </div>
     </div>
@@ -73,20 +79,20 @@ oi
         <h3>LASANHA</h3>
         <p>R$18,90</p>
       </div>
-  
+
       <div class="menu">
         <img src="imagens/imagens-promocao/images.jpg" alt="">
         <h3>PIZZA PEPPERONI</h3>
         <p>R$18,90</p>
       </div>
-  
+
       <div class="menu">
         <img src="imagens/imagens-promocao/croasiant.jpg" alt="">
         <h3>CROISSANT</h3>
         <p>R$18,90</p>
       </div>
     </div>
-  
+
     <a href="cardapio.html" class="botao"><button>VEJA NOSSO CARDÁPIO COMPLETO</button></a>
 
   </section>
@@ -101,7 +107,7 @@ oi
       </p>
       <a href="reserva.html"><button>RESERVE JÁ</button></a>
     </div>
-    
+
 
     <div class="quadrado">
       <img src="imagens/imagens-reservas/Delicious Pasta Pomodoro Recipe to Try.jpg" alt="Imagem de prato italiano">
@@ -204,18 +210,20 @@ oi
     <div class="copy">
       <p>&copy; 2025 Sapori d'Italia. Todos os direitos reservados.</p>
     </div>
-  </footer>  
-  
+  </footer>
+
   <script>
     const form = document.getElementById('reservaForm');
     const mensagem = document.getElementById('mensagem');
 
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
       event.preventDefault();
       const nome = form.nome.value;
       mensagem.textContent = `Obrigado, ${nome}! Sua reserva foi enviada com sucesso.`;
       form.reset();
     });
   </script>
+
 </body>
+
 </html>

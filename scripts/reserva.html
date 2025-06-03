@@ -62,45 +62,53 @@
 
       <button type="submit">Enviar Reserva</button>
     </form>
-    <div id="mensagem" class="success-message"></div>
   </div>
 
+  <div id="mensagem" class="success-message"></div>
 
 
-<script>
-  const form = document.getElementById('reservaForm');
-  const mensagem = document.getElementById('mensagem');
-  const dataInput = document.getElementById('data');
-  const horarioSelect = document.getElementById('horario');
+  <script>
+    const form = document.getElementById('reservaForm');
+    const mensagem = document.getElementById('mensagem');
+    const dataInput = document.getElementById('data');
+    const horarioSelect = document.getElementById('horario');
 
-  // Define a data mínima como hoje
-  const hoje = new Date();
-  const minDate = hoje.toISOString().split('T')[0];
-  dataInput.min = minDate;
+    // Define a data mínima como hoje
+    const hoje = new Date();
+    const minDate = hoje.toISOString().split('T')[0];
+    dataInput.min = minDate;
 
-  // Lista de horários disponíveis
-  const horariosDisponiveis = [
-    "12:00", "12:30", "13:00", "13:30",
-    "18:00", "18:30", "19:00", "19:30", "20:00"
-  ];
+    // Lista de horários disponíveis
+    const horariosDisponiveis = [
+      "12:00", "12:30", "13:00", "13:30",
+      "18:00", "18:30", "19:00", "19:30", "20:00"
+    ];
 
-  // Preenche o select com os horários disponíveis
-  horariosDisponiveis.forEach(horario => {
-    const option = document.createElement('option');
-    option.value = horario;
-    option.textContent = horario;
-    horarioSelect.appendChild(option);
-  });
+    // Preenche o select com os horários disponíveis
+    horariosDisponiveis.forEach(horario => {
+      const option = document.createElement('option');
+      option.value = horario;
+      option.textContent = horario;
+      horarioSelect.appendChild(option);
+    });
 
-  // Ao enviar o formulário
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const nome = form.nome.value;
-    const horario = form.horario.value;
-    mensagem.textContent = `Obrigado, ${nome}! Sua reserva para ${horario} foi enviada com sucesso.`;
-    form.reset();
-  });
-</script>
+    // Ao enviar o formulário
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const nome = form.nome.value;
+      const primeironome = nome.split(" ") [0];
+      const horario = form.horario.value;
+
+      mensagem.textContent = `Obrigado, ${primeironome}! Sua reserva para ${horario} foi enviada com sucesso.`;
+
+      mensagem.style.display = "block";
+      form.reset();
+
+      mensagem.scrollIntoView({ behavior: "smooth" });
+    });
+
+  </script>
 
 
 </body>
