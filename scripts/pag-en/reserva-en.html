@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservation - Sapori d'Italia</title>
+  <link rel="shortcut icon" href="../imagens/imagem-home/italian restaurant chapeu.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style_reserva.css">
+</head>
+
+<body>
+
+  <div class="foto">
+  </div>
+
+  <header>
+    <h1><a href="home-en.html">Sapori d'Italia</a></h1>
+    <p>Make your reservation online</p>
+  </header>
+
+  <div class="container">
+    <h2>Reservation Form</h2>
+    <form id="reservaForm">
+      <div>
+        <label for="nome">Full Name</label>
+        <input type="text" id="nome" name="nome" placeholder="Full Name" required />
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" required />
+      </div>
+
+      <div>
+        <label for="telefone">Phone</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="Phone" required />
+      </div>
+
+      <div>
+        <label for="data">Reservation Date</label>
+        <input type="date" id="data" name="data" required />
+      </div>
+
+      <select id="horario" name="horario" required>
+        <option value="">Select a time</option>
+        <!-- Available times will be added via JavaScript -->
+      </select>
+
+      <div>
+        <label for="pessoas">Number of People</label>
+        <select id="pessoas" name="pessoas" required>
+          <option value="">Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5+">5 or more</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit Reservation</button>
+    </form>
+  </div>
+
+  <div id="mensagem" class="success-message"></div>
+
+  <script>
+    const form = document.getElementById('reservaForm');
+    const mensagem = document.getElementById('mensagem');
+    const dataInput = document.getElementById('data');
+    const horarioSelect = document.getElementById('horario');
+
+    // Set the minimum date as today
+    const hoje = new Date();
+    const minDate = hoje.toISOString().split('T')[0];
+    dataInput.min = minDate;
+
+    // List of available times
+    const horariosDisponiveis = [
+      "12:00", "12:30", "13:00", "13:30",
+      "18:00", "18:30", "19:00", "19:30", "20:00"
+    ];
+
+    // Fill the select with available times
+    horariosDisponiveis.forEach(horario => {
+      const option = document.createElement('option');
+      option.value = horario;
+      option.textContent = horario;
+      horarioSelect.appendChild(option);
+    });
+
+    // On form submission
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const nome = form.nome.value;
+      const primeironome = nome.split(" ")[0];
+      const horario = form.horario.value;
+
+      mensagem.textContent = `Thank you, ${primeironome}! Your reservation for ${horario} has been successfully submitted.`;
+
+      mensagem.style.display = "block";
+      form.reset();
+
+      mensagem.scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
+
+</body>
+
+</html>

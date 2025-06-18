@@ -1,12 +1,15 @@
-:root {
-  --cor-primaria: #8B0000;
-  --cor-secundaria: #5A3D28;
-  --cor-destaque: #D4A018;
-  --cor-fonte: #FFFFFF;
-  --cor-fundo: #F5F5F5;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-  --fonte-serif: "Playfair Display", serif;
-  --font-sans-serif: "Montserrat", sans-serif;
+:root {
+    --cor-primaria: #8B0000;
+    --cor-secundaria: #5A3D28;
+    --cor-destaque: #D4A018;
+    --cor-fonte: #FFFFFF;
+    --cor-fundo: #F5F5F5;
+
+    --fonte-serif: "Playfair Display", serif;
+    --font-sans-serif: "Montserrat", sans-serif;
 }
 
 
@@ -21,10 +24,13 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
     background: #F5F5F5;
     color: #000000;
     line-height: 1.6;
+}
+
+p {
+    font-family: var(--font-sans-serif);
 }
 
 header {
@@ -155,58 +161,112 @@ main {
 }
 
 #rodape {
-  background-color: var(--cor-secundaria);
-  color: var(--cor-fonte);
-  padding: 30px 0 20px;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-fonte);
+    padding: 30px 0 20px;
 }
 
 #rodape p {
-  font-family: var(--font-sans-serif);
+    font-family: var(--font-sans-serif);
 }
 
 .container-rodape {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
 }
 
 .coluna {
-  flex: 1 1 300px;
+    flex: 1 1 300px;
 }
 
 .coluna h2,
 .coluna h3 {
-  color: var(--cor-destaque);
-  margin-bottom: 12px;
-  font-size: 28px;
+    color: var(--cor-destaque);
+    margin-bottom: 12px;
+    font-size: 28px;
 }
 
 .coluna p {
-  font-size: 14px;
-  margin-bottom: 8px;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
 .redes-sociais a {
-  color: var(--cor-fonte);
-  margin-right: 12px;
-  font-size: 22px;
-  transition: color 0.3s ease-in-out;
+    color: var(--cor-fonte);
+    margin-right: 12px;
+    font-size: 22px;
+    transition: color 0.3s ease-in-out;
 }
 
 .redes-sociais a:hover {
-  color: var(--cor-destaque);
+    color: var(--cor-destaque);
 }
 
 .copy {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 14px;
-  color: var(--cor-fonte);
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--cor-fonte);
 }
 
+/* ========================== RODAPÉ ========================== */
+
+#rodape {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-fonte);
+    padding: 30px 0 20px;
+}
+
+#rodape p {
+    font-family: var(--font-sans-serif);
+}
+
+.container-rodape {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.coluna {
+    flex: 1 1 300px;
+}
+
+.coluna h2,
+.coluna h3 {
+    color: var(--cor-destaque);
+    margin-bottom: 12px;
+    font-size: 28px;
+}
+
+.coluna p {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.redes-sociais a {
+    color: var(--cor-fonte);
+    margin-right: 12px;
+    font-size: 22px;
+    transition: color 0.3s ease-in-out;
+}
+
+.redes-sociais a:hover {
+    color: var(--cor-destaque);
+}
+
+.copy {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--cor-fonte);
+}
 
 @media (max-width: 768px) {
     .prato {
@@ -235,15 +295,5 @@ main {
 
     ul .reserva {
         display: none;
-    }
-
-    /*rodape*/
-    #rodape .container-rodape {
-        align-items: center;
-        text-align: center;
-    }
-
-    .coluna {
-        margin-bottom: 10px;
     }
 }
