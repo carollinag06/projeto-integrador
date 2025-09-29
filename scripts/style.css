@@ -851,6 +851,28 @@ header .idio-en{
   margin-top: 15px;
 }
 
+/*Botao whatsaap*/
+.btn-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  font-size: 22px;
+  padding: 7px 10px;
+  border-radius: 55%;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.479);
+  z-index: 1000;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: scale(1.1);
+  background-color: #1ebe5d;
+}
+
+
 @media (max-width: 890px) {
   .menu-icon {
     display: block;
