@@ -26,11 +26,12 @@ html {
 
 button {
   font-family: var(--font-sans-serif);
+  cursor: pointer;
 }
 
-a,
-button {
+a {
   cursor: pointer;
+  text-decoration: none;
 }
 
 /* ========================== HEADER ========================== */
@@ -138,8 +139,9 @@ header .idio-pt,
   cursor: pointer;
   margin: 5px;
   color: var(--cor-fonte);
-  
 }
+
+
 
 header .idio-pt {
   background-image: url(imagens/imagem-home/Flag_of_Brazil.svg.png);
