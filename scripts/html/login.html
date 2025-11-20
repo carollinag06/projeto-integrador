@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Sapori d'Italia</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style_login.css">
+  
+</head>
+
+<body>
+  <div class="login-card">
+    <a href="index.html" style="text-decoration: none;">
+      <h1>Sapori <span>d'Italia</span></h1>
+    </a>
+    <p>Acesso exclusivo para clientes e parceiros</p>
+    
+    <form id="formLogin">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Digite seu email" required>
+      </div>
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn-login">Entrar</button>
+    </form>
+    
+    <div class="extra-links">
+      <p><a href="#">Esqueceu a senha?</a></p>
+      <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = 'http://127.0.0.1:3000/login';
+
+    document.getElementById('formLogin').addEventListener('submit', async (event) => {
+      event.preventDefault(); // Impede a página de recarregar
+
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      // Feedback visual (muda texto do botão)
+      const btn = document.querySelector('.btn-login');
+      const textoOriginal = btn.innerText;
+      btn.innerText = 'Entrando...';
+      btn.disabled = true;
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, senha }) // Manda os dados pro Node.js
+        });
+
+        const resultado = await response.json();
+
+        if (response.ok) {
+          // SUCESSO!
+          alert(`Bem-vindo(a), ${resultado.usuario.nome}!`);
+          
+          // Salva o usuário no navegador (opcional, mas útil)
+          localStorage.setItem('usuarioLogado', JSON.stringify(resultado.usuario));
+
+          // Redireciona para a próxima tela (Menu ou Dashboard)
+          // Crie um arquivo menu.html ou mude aqui para onde quiser ir
+          window.location.href = 'index.html'; 
+
+        } else {
+          // ERRO (Senha errada ou email não existe)
+          alert(resultado.erro);
+        }
+
+      } catch (error) {
+        console.error(error);
+        alert('Erro ao conectar com o servidor. Verifique se o Node.js está rodando.');
+      } finally {
+        // Restaura o botão
+        btn.innerText = textoOriginal;
+        btn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
