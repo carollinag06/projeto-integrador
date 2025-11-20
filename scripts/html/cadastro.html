@@ -7,6 +7,11 @@
     <title>Cadastro - Ristorante di Lusso</title>
     <link rel="stylesheet" href="../css/style_cadastro.css">
     
+    <style>
+        /* CSS EXTRA PARA VALIDAÇÃO */
+        .erro-input { border: 2px solid #ff4d4d !important; background-color: #ffe6e6; }
+        .erro-texto { color: #ff4d4d; font-size: 12px; margin-top: 4px; display: none; font-weight: bold; }
+    </style>
 </head>
 
 <body>
@@ -31,13 +36,17 @@
                 <label for="telefone">Telefone</label>
                 <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
             </div>
+            
             <div class="input-group">
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" placeholder="Digite sua senha" required>
+                <input type="password" id="senha" placeholder="Digite sua senha (mínimo 6 dígitos)" required>
+                <div class="erro-texto" id="msgSenhaCurta">A senha deve ter no mínimo 6 caracteres.</div>
             </div>
+
             <div class="input-group">
                 <label for="confirmar-senha">Confirmar Senha</label>
                 <input type="password" id="confirmar-senha" placeholder="Confirme sua senha" required>
+                <div class="erro-texto" id="msgSenhaDiferente">As senhas não coincidem!</div>
             </div>
             
             <button type="submit" class="btn-register">Cadastrar</button>
@@ -49,44 +58,53 @@
     </div>
 
     <script>
-        // URL da sua API local
         const API_URL = 'http://127.0.0.1:3000/usuarios';
 
         document.getElementById('formCadastro').addEventListener('submit', async (e) => {
-            e.preventDefault(); // Impede a página de recarregar
+            e.preventDefault();
 
-            // 1. Captura os valores dos campos
-            const nome = document.getElementById('nome').value;
-            const cpf = document.getElementById('cpf').value;
-            const email = document.getElementById('email').value;
-            const telefone = document.getElementById('telefone').value;
-            const senha = document.getElementById('senha').value;
-            const confirmarSenha = document.getElementById('confirmar-senha').value;
+            // 1. Captura os elementos (Campos e Mensagens de erro)
+            const campoSenha = document.getElementById('senha');
+            const campoConfirma = document.getElementById('confirmar-senha');
+            const msgCurta = document.getElementById('msgSenhaCurta');
+            const msgDif = document.getElementById('msgSenhaDiferente');
 
-            // 2. Validação de Senha
-            if (senha !== confirmarSenha) {
-                alert("Erro: As senhas não coincidem!");
-                return; // Para a execução aqui
+            // 2. Limpa os erros visuais anteriores
+            campoSenha.classList.remove('erro-input');
+            campoConfirma.classList.remove('erro-input');
+            msgCurta.style.display = 'none';
+            msgDif.style.display = 'none';
+
+            // 3. VALIDAÇÃO: Tamanho Mínimo (6 caracteres)
+            if (campoSenha.value.length < 6) {
+                campoSenha.classList.add('erro-input');
+                msgCurta.style.display = 'block';
+                return; // Para tudo
             }
 
-            // 3. Monta o objeto JSON (igual ao seu código anterior)
-            // Note que enviamos null para CPF e Pratos, pois este form não tem esses campos
+            // 4. VALIDAÇÃO: Senhas Iguais
+            if (campoSenha.value !== campoConfirma.value) {
+                campoConfirma.classList.add('erro-input');
+                msgDif.style.display = 'block';
+                return; // Para tudo
+            }
+
+            // 5. Se passou, monta os dados
             const dadosUsuario = {
-                nome: nome,
-                email: email,
-                senha: senha,
-                telefone: telefone,
-                cpf: cpf,              // Campo oculto neste design
-                pratos_preferidos: null, // Campo oculto neste design
-                tipoUsuario: 1          // 1 = Cliente Comum
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                senha: campoSenha.value,
+                telefone: document.getElementById('telefone').value,
+                cpf: document.getElementById('cpf').value,
+                pratos_preferidos: null,
+                tipoUsuario: 1
             };
 
-            // 4. Envia para a API
+            // 6. Envia para o Servidor
             const btn = document.querySelector('.btn-register');
             const textoOriginal = btn.innerText;
-            
+
             try {
-                // Efeito visual de "Carregando..."
                 btn.innerText = "Enviando...";
                 btn.disabled = true;
 
@@ -97,8 +115,7 @@
                 });
 
                 if (response.ok) {
-                    alert('Seja bem-vindo ao Ristorante di Lusso! Cadastro realizado.');
-                    // Redireciona para o login após sucesso
+                    alert("Seja bem-vindo ao Sapori d'Italia! Cadastro realizado.");
                     window.location.href = 'login.html'; 
                 } else {
                     const erro = await response.json();
@@ -108,7 +125,6 @@
                 console.error('Erro:', error);
                 alert("Erro ao conectar com o servidor.");
             } finally {
-                // Restaura o botão
                 btn.innerText = textoOriginal;
                 btn.disabled = false;
             }

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperar Senha - Sapori d'Italia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+      body { font-family: 'Inter', sans-serif; background-color: #f4f4f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+      .card { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; width: 100%; max-width: 350px; }
+      h1 { font-family: 'Playfair Display', serif; color: #333; margin-bottom: 10px; }
+      .input-group { margin-bottom: 15px; text-align: left; }
+      .input-group label { display: block; margin-bottom: 5px; color: #333; font-weight: 600; font-size: 14px; }
+      .input-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+      
+      /* Classe para erro visual (borda vermelha) */
+      .erro-input { border-color: red !important; background-color: #fff0f0; }
+      .erro-texto { color: red; font-size: 12px; margin-top: 2px; display: none; }
+
+      .btn-reset { width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+      .back-link { display: block; margin-top: 20px; color: #d32f2f; text-decoration: none; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Recuperar Senha</h1>
+    <p style="color: #666; font-size: 14px;">Preencha os dados para validar.</p>
+    
+    <form id="formRecuperar">
+      <div class="input-group">
+        <label>E-mail</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="input-group">
+        <label>CPF</label>
+        <input type="text" id="cpf" required>
+      </div>
+
+      <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+      <div class="input-group">
+        <label>Nova Senha</label>
+        <input type="password" id="novaSenha" required placeholder="Min. 6 caracteres">
+        <div class="erro-texto" id="msgSenhaCurta">A senha deve ter no mínimo 6 caracteres.</div>
+      </div>
+
+      <div class="input-group">
+        <label>Confirmar Senha</label>
+        <input type="password" id="confirmaSenha" required placeholder="Repita a senha">
+        <div class="erro-texto" id="msgSenhaDiferente">As senhas não coincidem!</div>
+      </div>
+
+      <button type="submit" class="btn-reset">Alterar Senha</button>
+    </form>
+    
+    <a href="login.html" class="back-link">← Voltar para o Login</a>
+  </div>
+
+  <script>
+    const API_URL = 'http://127.0.0.1:3000/recuperar-senha';
+
+    document.getElementById('formRecuperar').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // --- VALIDAÇÃO NO FRONTEND ---
+      const senha = document.getElementById('novaSenha');
+      const confirma = document.getElementById('confirmaSenha');
+      const msgCurta = document.getElementById('msgSenhaCurta');
+      const msgDif = document.getElementById('msgSenhaDiferente');
+
+      // 1. Reseta estilos de erro
+      senha.classList.remove('erro-input');
+      confirma.classList.remove('erro-input');
+      msgCurta.style.display = 'none';
+      msgDif.style.display = 'none';
+
+      // 2. Regra: Mínimo 6 caracteres
+      if (senha.value.length < 6) {
+          senha.classList.add('erro-input');
+          msgCurta.style.display = 'block';
+          return; // Para tudo aqui
+      }
+
+      // 3. Regra: Senhas Iguais
+      if (senha.value !== confirma.value) {
+          confirma.classList.add('erro-input');
+          msgDif.style.display = 'block';
+          return; // Para tudo aqui
+      }
+
+      // --- SE PASSOU, ENVIA PRO SERVIDOR ---
+      const dados = {
+          email: document.getElementById('email').value,
+          cpf: document.getElementById('cpf').value,
+          novaSenha: senha.value
+      };
+
+      try {
+          const response = await fetch(API_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(dados)
+          });
+
+          const resultado = await response.json();
+
+          if (response.ok) {
+              Swal.fire('Sucesso!', 'Senha alterada com sucesso.', 'success')
+                  .then(() => window.location.href = 'login.html');
+          } else {
+              Swal.fire('Erro', resultado.erro, 'error');
+          }
+
+      } catch (error) {
+          Swal.fire('Erro', 'Falha na conexão.', 'error');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -5,37 +5,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reserva - Sapori d'Italia</title>
+
   <link rel="shortcut icon" href="../imagens/imagem-home/italian restaurant chapeu.png" type="image/x-icon">
   <link rel="stylesheet" href="../css/style_reserva.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
 <body>
-
-  <div class="foto">
-  </div>
-
+  <div class="foto"> </div>
+  
   <header>
     <h1><a href="index.html">Sapori d'Italia</a></h1>
-    <p>Faça sua reserva online</p>
+    <p>Garanta seu lugar em nossa mesa</p>
   </header>
 
   <div class="container">
-    <h2>Formulário de Reserva</h2>
+
+    <h2>Nova Reserva</h2>
+
     <form id="reservaForm">
+      <input type="hidden" id="usuarioId">
+
       <div>
         <label for="nome">Nome completo</label>
-        <input type="text" id="nome" name="nome" placeholder="Nome completo" required />
+        <input type="text" id="nome" name="nome" placeholder="Nome completo" required readonly
+          style="background-color: #f0f0f0;" />
       </div>
 
       <div>
         <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" placeholder="E-mail" required />
+        <input type="email" id="email" name="email" placeholder="E-mail" required readonly
+          style="background-color: #f0f0f0;" />
       </div>
 
       <div>
-        <label for="telefone">Telefone</label>
-        <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required />
+        <label for="telefone">Telefone (WhatsApp)</label>
+        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required />
       </div>
 
       <div>
@@ -43,74 +51,140 @@
         <input type="date" id="data" name="data" required />
       </div>
 
+      <label>Horário</label>
       <select id="horario" name="horario" required>
         <option value="">Selecione um horário</option>
-        <!-- Os horários disponíveis serão inseridos via JavaScript -->
       </select>
 
       <div>
         <label for="pessoas">Número de pessoas</label>
         <select id="pessoas" name="pessoas" required>
           <option value="">Selecione</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5+">5 ou mais</option>
+          <option value="1">1 pessoa</option>
+          <option value="2">2 pessoas (Casal)</option>
+          <option value="3">3 pessoas</option>
+          <option value="4">4 pessoas</option>
+          <option value="5">5 pessoas</option>
+          <option value="6">6 pessoas</option>
+          <option value="Grupo">Mais de 6 (Ligar para o restaurante)</option>
         </select>
       </div>
 
-      <button type="submit">Enviar Reserva</button>
+      <button type="submit" id="btnReservar">Confirmar Reserva</button>
     </form>
   </div>
 
-  <div id="mensagem" class="success-message"></div>
-
-
   <script>
-    const form = document.getElementById('reservaForm');
-    const mensagem = document.getElementById('mensagem');
+    // URL da API
+    const API_URL = 'http://127.0.0.1:3000';
+
+    // 1. CONFIGURAÇÃO INICIAL (Data e Horário)
     const dataInput = document.getElementById('data');
     const horarioSelect = document.getElementById('horario');
 
-    // Define a data mínima como hoje
+    // Data mínima = Hoje
     const hoje = new Date();
     const minDate = hoje.toISOString().split('T')[0];
     dataInput.min = minDate;
 
-    // Lista de horários disponíveis
-    const horariosDisponiveis = [
-      "12:00", "12:30", "13:00", "13:30",
-      "18:00", "18:30", "19:00", "19:30", "20:00"
-    ];
-
-    // Preenche o select com os horários disponíveis
-    horariosDisponiveis.forEach(horario => {
-      const option = document.createElement('option');
-      option.value = horario;
-      option.textContent = horario;
-      horarioSelect.appendChild(option);
+    // Preenche horários
+    const horarios = ["18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00"];
+    horarios.forEach(hora => {
+      const opt = document.createElement('option');
+      opt.value = hora;
+      opt.innerText = hora;
+      horarioSelect.appendChild(opt);
     });
 
-    // Ao enviar o formulário
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
+    // 2. DINAMISMO: Preencher dados do usuário logado
+    function verificarLogin() {
+      const userString = localStorage.getItem('usuarioLogado');
 
-      const nome = form.nome.value;
-      const primeironome = nome.split(" ")[0];
-      const horario = form.horario.value;
+      if (!userString) {
+        // Se não estiver logado, avisa e manda pro login
+        Swal.fire({
+          title: 'Login Necessário',
+          text: 'Para fazer uma reserva, você precisa entrar na sua conta.',
+          icon: 'info',
+          confirmButtonText: 'Ir para Login'
+        }).then(() => {
+          window.location.href = 'login.html';
+        });
+        return;
+      }
 
-      mensagem.textContent = `Obrigado, ${primeironome}! Sua reserva para ${horario} foi enviada com sucesso.`;
+      const usuario = JSON.parse(userString);
 
-      mensagem.style.display = "block";
-      form.reset();
+      // Preenche os campos automaticamente
+      document.getElementById('usuarioId').value = usuario.id;
+      document.getElementById('nome').value = usuario.nome;
+      document.getElementById('email').value = usuario.email || ''; // Se tiver email no objeto, preenche
 
-      mensagem.scrollIntoView({ behavior: "smooth" });
+      // Tenta buscar o telefone completo do banco (opcional, mas legal)
+      fetch(`${API_URL}/usuarios/${usuario.id}`)
+        .then(res => res.json())
+        .then(dadosCompletos => {
+          if (dadosCompletos.telefone) {
+            document.getElementById('telefone').value = dadosCompletos.telefone;
+          }
+          if (dadosCompletos.email) {
+            document.getElementById('email').value = dadosCompletos.email;
+          }
+        });
+    }
+
+    // 3. ENVIAR PRO BANCO DE DADOS
+    document.getElementById('reservaForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const btn = document.getElementById('btnReservar');
+      const textoOriginal = btn.innerText;
+
+      // Dados para enviar
+      const novaReserva = {
+        usuarioId: document.getElementById('usuarioId').value,
+        data_reserva: document.getElementById('data').value,
+        horario: document.getElementById('horario').value,
+        numero_pessoas: document.getElementById('pessoas').value,
+        // Podemos salvar o telefone atualizado caso o usuário mude aqui
+        status: 'Confirmada'
+      };
+
+      try {
+        btn.innerText = "Reservando...";
+        btn.disabled = true;
+
+        const response = await fetch(`${API_URL}/reservas`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(novaReserva)
+        });
+
+        if (response.ok) {
+          Swal.fire({
+            title: 'Reserva Confirmada! 🍷',
+            text: `Te esperamos dia ${novaReserva.data_reserva} às ${novaReserva.horario}.`,
+            icon: 'success'
+          }).then(() => {
+            window.location.href = 'index.html'; // Ou redirecionar para 'Meus Pedidos'
+          });
+        } else {
+          Swal.fire('Erro', 'Não foi possível reservar. Tente outro horário.', 'error');
+        }
+
+      } catch (erro) {
+        console.error(erro);
+        Swal.fire('Erro', 'Falha na conexão com o servidor.', 'error');
+      } finally {
+        btn.innerText = textoOriginal;
+        btn.disabled = false;
+      }
     });
+
+    // Executa ao abrir a página
+    verificarLogin();
 
   </script>
-
-
 </body>
 
 </html>

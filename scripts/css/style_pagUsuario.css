@@ -1,14 +1,11 @@
     body {
+      background-color: #f8f9fa;
       font-family: 'Inter', sans-serif;
-      background-color: #f9f9f9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
     }
 
     .profile-card {
+      margin-top: 30px;
+      margin-bottom: 50px;
       background: white;
       width: 100%;
       max-width: 400px;
@@ -95,3 +92,25 @@
     .btn-sair:hover {
       background-color: #b02a37;
     }
+
+     .reserva-item {
+        border-left: 5px solid #d32f2f; /* Faixa vermelha elegante */
+        background-color: #fff;
+        padding: 15px;
+        margin-bottom: 12px;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: transform 0.2s;
+    }
+    .reserva-item:hover { transform: translateX(2px); }
+    
+    .reserva-info { display: flex; flex-direction: column; }
+    .reserva-data { font-weight: 700; color: #333; font-size: 1.05rem; }
+    .reserva-detalhes { font-size: 0.9rem; color: #666; margin-top: 2px; }
+    .reserva-status { font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; color: #28a745; margin-top: 4px;}
+
+    .btn-action { width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.3s; }
+    .btn-action:hover { background-color: #f0f0f0; }
