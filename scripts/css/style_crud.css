@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --cor-primaria: #8B0000;
+    --cor-secundaria: #5A3D28;
+    --cor-destaque: #D4A018;
+    --cor-fonte: #FFFFFF;
+    --cor-fundo: #F5F5F5;
+
+    --fonte-serif: "Playfair Display", serif;
+    --font-sans-serif: "Montserrat", sans-serif;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #F5F5F5;
+    color: #000000;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+p {
+    font-family: var(--font-sans-serif);
+}
+
+header {
+    background: #FFFFFF;
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #8B0000;
+}
+
+header h1 a {
+    font-family: 'Playfair Display', serif;
+    text-decoration: none;
+    font-size: 28px;
+    color: #8B0000;
+    transition: 0.5s;
+}
+
+header h1 a:hover {
+    color: #D4A018;
+}
+
+header i {
+    font-size: 26px;
+    color: #5A3D28;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #5A3D28;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #8B0000;
+}
+
+
+main {
+    padding: 40px;
+}
+
+.container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+        }
+
+
+         h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input, button, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border-radius: 6px;
+            border: 1px solid #bbb;
+            font-size: 16px;
+        }
+
+        button {
+            background: #222;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover { background: #444; }
+
+        .prato-card {
+            background: #fff;
+            margin-top: 12px;
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            gap: 12px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.15);
+        }
+
+        .prato-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .acoes button {
+            margin-right: 5px;
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+
+.check-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .prato {
+        flex-direction: column;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header i {
+        display: none;
+    }
+
+    nav ul {
+        gap: 10px;
+        padding-top: 10px;
+    }
+
+    nav li {
+        display: block;
+        text-decoration: underline;
+        font-size: 17px;
+    }
+
+    ul .reserva {
+        display: none;
+    }
+}

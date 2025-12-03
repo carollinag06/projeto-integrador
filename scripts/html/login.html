@@ -9,7 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="../css/style_login.css">
-  
+
 </head>
 
 <body>
@@ -18,7 +18,7 @@
       <h1>Sapori <span>d'Italia</span></h1>
     </a>
     <p>Acesso exclusivo para clientes e parceiros</p>
-    
+
     <form id="formLogin">
       <div class="input-group">
         <label for="email">Email</label>
@@ -30,7 +30,7 @@
       </div>
       <button type="submit" class="btn-login">Entrar</button>
     </form>
-    
+
     <div class="extra-links">
       <p><a href="esqueciS.html">Esqueceu a senha?</a></p>
       <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
@@ -64,13 +64,13 @@
         if (response.ok) {
           // SUCESSO!
           alert(`Bem-vindo(a), ${resultado.usuario.nome}!`);
-          
+
           // Salva o usuário no navegador (opcional, mas útil)
           localStorage.setItem('usuarioLogado', JSON.stringify(resultado.usuario));
 
           // Redireciona para a próxima tela (Menu ou Dashboard)
           // Crie um arquivo menu.html ou mude aqui para onde quiser ir
-          window.location.href = 'index.html'; 
+          window.location.href = 'index.html';
 
         } else {
           // ERRO (Senha errada ou email não existe)
@@ -88,4 +88,5 @@
     });
   </script>
 </body>
+
 </html>

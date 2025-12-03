@@ -201,6 +201,7 @@
       <div class="coluna">
         <h2>Sapori d'Italia</h2>
         <p>Sabores autênticos da culinária italiana direto para sua mesa.</p>
+        <a href="cadastro.html"><button>Cadastre-se</button></a>
 
         <div class="idiomas">
           <a href="index.html"><button class="idio-pt">BR</button></a>
@@ -246,7 +247,7 @@
 
         // Mostra a bolinha do Perfil
         if (btnPerfil) btnPerfil.style.display = 'inline-block';
-
+        console.log("usuário logado.");
       } else {
         // --- USUÁRIO NÃO ESTÁ LOGADO (Visitante) ---
 
@@ -255,6 +256,7 @@
 
         // Garante que o Perfil suma
         if (btnPerfil) btnPerfil.style.display = 'none';
+        console.log("Nenhum usuário logado");
       }
     });
   </script>
