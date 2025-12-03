@@ -274,6 +274,24 @@ app.delete('/usuarios/:id', async (req, res) => {
     } catch (e) { res.status(500).json({ erro: e.message }); }
 });
 
+// Buscar usuário por ID (necessário para a página de perfil)
+app.get('/usuarios/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        console.log(`GET /usuarios/${id} - solicitacao de perfil`);
+        const usuario = await Usuario.findByPk(id);
+        if (!usuario) {
+            console.log(`Usuário id=${id} não encontrado.`);
+            return res.status(404).json({ erro: 'User not found' });
+        }
+        console.log(`Usuário id=${id} encontrado:`, { id: usuario.id, nome: usuario.nome });
+        res.json(usuario);
+    } catch (e) {
+        console.error('Erro ao buscar usuário:', e);
+        res.status(500).json({ erro: e.message });
+    }
+});
+
 // --- RESERVAS ---
 app.post('/reservas', async (req, res) => {
     try {

@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Perfil - Sapori d'Italia</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <link rel="stylesheet" href="../css/style_pagUsuario.css">
@@ -19,71 +21,93 @@
 <body class="bg-light">
 
   <div class="container d-flex justify-content-center">
-      <div class="profile-card bg-white p-4 rounded shadow" style="max-width: 500px; width: 100%;">
-        
-        <button class="btn btn-link text-decoration-none mb-3 p-0" style="color: #d32f2f;" onclick="window.location.href='index.html'">
-            <i class="bi bi-arrow-left"></i> Voltar a home
-        </button>
+    <div class="profile-card bg-white p-4 rounded shadow" style="max-width: 500px; width: 100%;">
 
-        <h1 class="text-center mb-4" style="font-family: 'Playfair Display'; color: #333;">
-            Meu <span style="color: #d32f2f;">Perfil</span>
-        </h1>
+      <button class="btn btn-link text-decoration-none mb-3 p-0" style="color: #d32f2f;"
+        onclick="window.location.href='index.html'">
+        <i class="bi bi-arrow-left"></i> Voltar a home
+      </button>
 
-        <div id="loading" class="text-center py-4">
-            <div class="spinner-border text-danger" role="status"></div>
-            <p class="mt-2 text-muted">Carregando seus dados...</p>
-        </div>
 
-        <div id="conteudo-perfil" style="display: none;">
-          
-          <div class="bg-light p-3 rounded mb-4">
-              <div class="mb-3">
-                <label class="fw-bold text-muted small text-uppercase">Nome</label>
-                <div class="fs-5 text-dark" id="displayNome"></div>
-              </div>
+      <h1 class="text-center mb-4" style="font-family: 'Playfair Display'; color: #333;">
+        Meu <span style="color: #d32f2f;">Perfil</span>
+      </h1>
 
-              <div class="mb-3">
-                <label class="fw-bold text-muted small text-uppercase">Email</label>
-                <div class="fs-5 text-dark" id="displayEmail"></div>
-              </div>
-
-              <div class="row">
-                  <div class="col-6 mb-0">
-                    <label class="fw-bold text-muted small text-uppercase">Telefone</label>
-                    <div class="fs-6" id="displayTelefone"></div>
-                  </div>
-                  <div class="col-6 mb-0">
-                    <label class="fw-bold text-muted small text-uppercase">Favorito</label>
-                    <div class="fs-6" id="displayPratos"></div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="row g-2 mb-4">
-              <div class="col-6">
-                  <button onclick="abrirModalEditarPerfil()" class="btn btn-success w-100">
-                    <i class="bi bi-pencil-square"></i> Editar Dados
-                  </button>
-              </div>
-              <div class="col-6">
-                  <button onclick="logout()" class="btn btn-outline-danger w-100">
-                    <i class="bi bi-box-arrow-right"></i> Sair
-                  </button>
-              </div>
-          </div>
-
-          <hr class="my-4">
-
-          <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="m-0" style="font-family: 'Playfair Display';">Minhas Reservas</h4>
-              <a href="reserva.html" class="btn btn-sm btn-danger rounded-pill">+ Nova</a>
-          </div>
-          
-          <div id="lista-reservas">
-              </div>
-
-        </div>
+      <div id="loading" class="text-center py-4">
+        <div class="spinner-border text-danger" role="status"></div>
+        <p class="mt-2 text-muted">Carregando seus dados...</p>
       </div>
+
+      <div id="conteudo-perfil" style="display: none;">
+
+        <div class="bg-light p-3 rounded mb-4">
+          <div class="mb-3">
+            <label class="fw-bold text-muted small text-uppercase">Nome</label>
+            <div class="fs-5 text-dark" id="displayNome"></div>
+          </div>
+
+          <div class="mb-3">
+            <label class="fw-bold text-muted small text-uppercase">Email</label>
+            <div class="fs-5 text-dark" id="displayEmail"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-6 mb-0">
+              <label class="fw-bold text-muted small text-uppercase">Telefone</label>
+              <div class="fs-6" id="displayTelefone"></div>
+            </div>
+            <div class="col-6 mb-0">
+              <label class="fw-bold text-muted small text-uppercase">Favorito</label>
+              <div class="fs-6" id="displayPratos"></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="area-admin" class="mb-3" style="display: none;">
+          <h5 class="text-center text-danger mb-2" style="font-family: 'Playfair Display';">Área Administrativa</h5>
+          <div class="d-grid gap-2">
+            <a href="dashboard.html" class="btn btn-dark">
+              <i class="bi bi-speedometer2"></i> Acessar Dashboard
+            </a>
+
+            <a href="crud_cardapio.html" class="btn btn-outline-dark">
+              <i class="bi bi-journal-text"></i> Gerenciar Cardápio
+            </a>
+
+            <a href="gerenciamentoUsuario.html" class="btn btn-outline-dark">
+              <i class="bi bi-people-fill"></i> Gerenciar Usuários
+            </a>
+          </div>
+          <hr>
+        </div>
+        <div class="row g-2 mb-4">
+          <div class="col-6">
+            <button onclick="abrirModalEditarPerfil()" class="btn btn-success w-100">
+              <i class="bi bi-pencil-square"></i> Editar Dados
+            </button>
+          </div>
+          <div class="col-6">
+            <button onclick="logout()" class="btn btn-outline-danger w-100">
+              <i class="bi bi-box-arrow-right"></i> Sair
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="m-0" style="font-family: 'Playfair Display';">Minhas Reservas</h4>
+        <a href="reserva.html" class="btn btn-sm btn-danger rounded-pill">+ Nova</a>
+      </div>
+
+      <div id="lista-reservas">
+      </div>
+
+    </div>
+  </div>
   </div>
 
   <div class="modal fade" id="modalEditarPerfil" tabindex="-1">
@@ -98,7 +122,8 @@
             <div class="mb-3"><label>Nome</label><input type="text" id="editNome" class="form-control"></div>
             <div class="mb-3"><label>Email</label><input type="email" id="editEmail" class="form-control"></div>
             <div class="mb-3"><label>Telefone</label><input type="text" id="editTelefone" class="form-control"></div>
-            <div class="mb-3"><label>Prato Favorito</label><input type="text" id="editPratos" class="form-control"></div>
+            <div class="mb-3"><label>Prato Favorito</label><input type="text" id="editPratos" class="form-control">
+            </div>
           </form>
         </div>
         <div class="modal-footer">
@@ -118,39 +143,40 @@
         </div>
         <div class="modal-body">
           <input type="hidden" id="editReservaId">
-          
+
           <div class="mb-3">
-              <label class="fw-bold">Nova Data</label>
-              <input type="date" id="editReservaData" class="form-control">
+            <label class="fw-bold">Nova Data</label>
+            <input type="date" id="editReservaData" class="form-control">
           </div>
           <div class="mb-3">
-              <label class="fw-bold">Novo Horário</label>
-              <select id="editReservaHorario" class="form-select">
-                  <option value="18:00">18:00</option>
-                  <option value="18:30">18:30</option>
-                  <option value="19:00">19:00</option>
-                  <option value="19:30">19:30</option>
-                  <option value="20:00">20:00</option>
-                  <option value="20:30">20:30</option>
-                  <option value="21:00">21:00</option>
-                  <option value="21:30">21:30</option>
-                  <option value="22:00">22:00</option>
-              </select>
+            <label class="fw-bold">Novo Horário</label>
+            <select id="editReservaHorario" class="form-select">
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+              <option value="20:00">20:00</option>
+              <option value="20:30">20:30</option>
+              <option value="21:00">21:00</option>
+              <option value="21:30">21:30</option>
+              <option value="22:00">22:00</option>
+            </select>
           </div>
           <div class="mb-3">
-              <label class="fw-bold">Pessoas</label>
-              <select id="editReservaPessoas" class="form-select">
-                  <option value="1">1 pessoa</option>
-                  <option value="2">2 pessoas</option>
-                  <option value="3">3 pessoas</option>
-                  <option value="4">4 pessoas</option>
-                  <option value="5">5 pessoas</option>
-                  <option value="6">6 pessoas</option>
-              </select>
+            <label class="fw-bold">Pessoas</label>
+            <select id="editReservaPessoas" class="form-select">
+              <option value="1">1 pessoa</option>
+              <option value="2">2 pessoas</option>
+              <option value="3">3 pessoas</option>
+              <option value="4">4 pessoas</option>
+              <option value="5">5 pessoas</option>
+              <option value="6">6 pessoas</option>
+            </select>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger w-100" onclick="salvarMudancasReserva()">Confirmar Mudança</button>
+          <button type="button" class="btn btn-danger w-100" onclick="salvarMudancasReserva()">Confirmar
+            Mudança</button>
         </div>
       </div>
     </div>
@@ -180,13 +206,19 @@
         if (response.ok) {
           const dados = await response.json();
 
+          // --- LÓGICA DO ADMIN (NOVO) ---
+          // Se tipoUsuario for 2 (Admin), mostra o painel
+          if (dados.tipoUsuario == 2 || dados.tipoUsuario === 'admin') {
+            document.getElementById('area-admin').style.display = 'block';
+          }
+
           // Preenche os textos na tela
           document.getElementById('displayNome').innerText = dados.nome;
           document.getElementById('displayEmail').innerText = dados.email;
           document.getElementById('displayTelefone').innerText = dados.telefone || '-';
           document.getElementById('displayPratos').innerText = dados.pratos_preferidos || '-';
 
-          // Preenche os campos do Modal de Perfil (para quando abrir)
+          // Preenche os campos do Modal de Perfil
           document.getElementById('editNome').value = dados.nome;
           document.getElementById('editEmail').value = dados.email;
           document.getElementById('editTelefone').value = dados.telefone || '';
@@ -209,158 +241,166 @@
     // 2. GERENCIAR RESERVAS (LISTAR, EDITAR, EXCLUIR)
     // ==========================================
     async function carregarReservas() {
-        const divLista = document.getElementById('lista-reservas');
-        divLista.innerHTML = '<p class="text-center text-muted"><small>Atualizando...</small></p>';
+      const divLista = document.getElementById('lista-reservas');
+      divLista.innerHTML = '<p class="text-center text-muted"><small>Atualizando...</small></p>';
 
-        try {
-            const res = await fetch(`${API_URL}/reservas/usuario/${usuarioAtualID}`);
-            const reservas = await res.json();
+      try {
+        const res = await fetch(`${API_URL}/reservas/usuario/${usuarioAtualID}`);
 
-            divLista.innerHTML = ''; // Limpa
-
-            if (reservas.length === 0) {
-                divLista.innerHTML = `
-                    <div class="text-center py-3 text-muted">
-                        <i class="bi bi-calendar-x fs-1"></i>
-                        <p>Nenhuma reserva encontrada.</p>
-                    </div>`;
-                return;
-            }
-
-            reservas.forEach(reserva => {
-                // Formata data
-                const dataFormatada = reserva.data_reserva.split('-').reverse().join('/');
-                
-                const html = `
-                <div class="reserva-item">
-                    <div class="reserva-info">
-                        <span class="reserva-data">📅 ${dataFormatada} - ${reserva.horario}</span>
-                        <span class="reserva-detalhes">Mesa para ${reserva.numero_pessoas} pessoas</span>
-                        <span class="reserva-status">Confirmada</span>
-                    </div>
-                    <div class="d-flex">
-                        <button class="btn btn-action text-primary" title="Editar"
-                            onclick="abrirModalReserva('${reserva.id}', '${reserva.data_reserva}', '${reserva.horario}', '${reserva.numero_pessoas}')">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
-                        <button class="btn btn-action text-danger" title="Cancelar"
-                            onclick="cancelarReserva('${reserva.id}')">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </div>
-                </div>`;
-                divLista.innerHTML += html;
-            });
-
-        } catch (error) {
-            console.error(error);
-            divLista.innerHTML = '<p class="text-danger text-center">Erro ao buscar reservas.</p>';
+        if (!res.ok) {
+          console.error('Resposta /reservas/usuario não-ok', res.status);
+          divLista.innerHTML = `<p class="text-danger text-center">Erro ao buscar reservas (status ${res.status}).</p>`;
+          return;
         }
+
+        const reservas = await res.json();
+
+        divLista.innerHTML = ''; // Limpa
+
+        if (!Array.isArray(reservas) || reservas.length === 0) {
+          divLista.innerHTML = `
+            <div class="text-center py-3 text-muted">
+              <i class="bi bi-calendar-x fs-1"></i>
+              <p>Nenhuma reserva encontrada.</p>
+            </div>`;
+          return;
+        }
+
+        reservas.forEach(reserva => {
+          // Formata data
+          const dataFormatada = reserva.data_reserva.split('-').reverse().join('/');
+
+          const html = `
+          <div class="reserva-item">
+            <div class="reserva-info">
+              <span class="reserva-data">📅 ${dataFormatada} - ${reserva.horario}</span>
+              <span class="reserva-detalhes">Mesa para ${reserva.numero_pessoas} pessoas</span>
+              <span class="reserva-status">Confirmada</span>
+            </div>
+            <div class="d-flex">
+              <button class="btn btn-action text-primary" title="Editar"
+                onclick="abrirModalReserva('${reserva.id}', '${reserva.data_reserva}', '${reserva.horario}', '${reserva.numero_pessoas}')">
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+              <button class="btn btn-action text-danger" title="Cancelar"
+                onclick="cancelarReserva('${reserva.id}')">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+          </div>`;
+          divLista.innerHTML += html;
+        });
+
+      } catch (error) {
+        console.error('Erro ao buscar reservas:', error);
+        divLista.innerHTML = '<p class="text-danger text-center">Erro ao buscar reservas. Verifique o servidor.</p>';
+      }
     }
 
     // A. Abrir Modal Reserva
     function abrirModalReserva(id, data, hora, pessoas) {
-        document.getElementById('editReservaId').value = id;
-        document.getElementById('editReservaData').value = data;
-        document.getElementById('editReservaHorario').value = hora;
-        document.getElementById('editReservaPessoas').value = pessoas;
+      document.getElementById('editReservaId').value = id;
+      document.getElementById('editReservaData').value = data;
+      document.getElementById('editReservaHorario').value = hora;
+      document.getElementById('editReservaPessoas').value = pessoas;
 
-        new bootstrap.Modal(document.getElementById('modalEditarReserva')).show();
+      new bootstrap.Modal(document.getElementById('modalEditarReserva')).show();
     }
 
     // B. Salvar Reserva (PUT)
     async function salvarMudancasReserva() {
-        const id = document.getElementById('editReservaId').value;
-        const dados = {
-            data_reserva: document.getElementById('editReservaData').value,
-            horario: document.getElementById('editReservaHorario').value,
-            numero_pessoas: document.getElementById('editReservaPessoas').value
-        };
+      const id = document.getElementById('editReservaId').value;
+      const dados = {
+        data_reserva: document.getElementById('editReservaData').value,
+        horario: document.getElementById('editReservaHorario').value,
+        numero_pessoas: document.getElementById('editReservaPessoas').value
+      };
 
-        try {
-            await fetch(`${API_URL}/reservas/${id}`, {
-                method: 'PUT', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dados)
-            });
-            
-            bootstrap.Modal.getInstance(document.getElementById('modalEditarReserva')).hide();
-            Swal.fire({ title: 'Reserva Atualizada!', icon: 'success', timer: 1500, showConfirmButton: false });
-            carregarReservas();
+      try {
+        await fetch(`${API_URL}/reservas/${id}`, {
+          method: 'PUT', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dados)
+        });
 
-        } catch (error) { Swal.fire('Erro', 'Falha ao atualizar.', 'error'); }
+        bootstrap.Modal.getInstance(document.getElementById('modalEditarReserva')).hide();
+        Swal.fire({ title: 'Reserva Atualizada!', icon: 'success', timer: 1500, showConfirmButton: false });
+        carregarReservas();
+
+      } catch (error) { Swal.fire('Erro', 'Falha ao atualizar.', 'error'); }
     }
 
     // C. Cancelar Reserva (DELETE)
     function cancelarReserva(id) {
-        Swal.fire({
-            title: 'Cancelar Reserva?',
-            text: "Tem certeza que deseja desmarcar?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            confirmButtonText: 'Sim, cancelar'
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                await fetch(`${API_URL}/reservas/${id}`, { method: 'DELETE' });
-                Swal.fire({ title: 'Cancelado!', icon: 'success', timer: 1500, showConfirmButton: false });
-                carregarReservas();
-            }
-        });
+      Swal.fire({
+        title: 'Cancelar Reserva?',
+        text: "Tem certeza que deseja desmarcar?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Sim, cancelar'
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await fetch(`${API_URL}/reservas/${id}`, { method: 'DELETE' });
+          Swal.fire({ title: 'Cancelado!', icon: 'success', timer: 1500, showConfirmButton: false });
+          carregarReservas();
+        }
+      });
     }
 
     // ==========================================
     // 3. GERENCIAR PERFIL (EDITAR DADOS)
     // ==========================================
     function abrirModalEditarPerfil() {
-        new bootstrap.Modal(document.getElementById('modalEditarPerfil')).show();
+      new bootstrap.Modal(document.getElementById('modalEditarPerfil')).show();
     }
 
     async function salvarMudancasPerfil() {
-        const dados = {
-            nome: document.getElementById('editNome').value,
-            email: document.getElementById('editEmail').value,
-            telefone: document.getElementById('editTelefone').value,
-            pratos_preferidos: document.getElementById('editPratos').value
-        };
+      const dados = {
+        nome: document.getElementById('editNome').value,
+        email: document.getElementById('editEmail').value,
+        telefone: document.getElementById('editTelefone').value,
+        pratos_preferidos: document.getElementById('editPratos').value
+      };
 
-        try {
-            await fetch(`${API_URL}/usuarios/${usuarioAtualID}`, {
-                method: 'PUT', headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dados)
-            });
+      try {
+        await fetch(`${API_URL}/usuarios/${usuarioAtualID}`, {
+          method: 'PUT', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dados)
+        });
 
-            // Atualiza nome no localStorage
-            const userLocal = JSON.parse(localStorage.getItem('usuarioLogado'));
-            userLocal.nome = dados.nome;
-            localStorage.setItem('usuarioLogado', JSON.stringify(userLocal));
+        // Atualiza nome no localStorage
+        const userLocal = JSON.parse(localStorage.getItem('usuarioLogado'));
+        userLocal.nome = dados.nome;
+        localStorage.setItem('usuarioLogado', JSON.stringify(userLocal));
 
-            bootstrap.Modal.getInstance(document.getElementById('modalEditarPerfil')).hide();
-            Swal.fire({ title: 'Perfil Salvo!', icon: 'success', timer: 1500, showConfirmButton: false });
-            carregarDados();
+        bootstrap.Modal.getInstance(document.getElementById('modalEditarPerfil')).hide();
+        Swal.fire({ title: 'Perfil Salvo!', icon: 'success', timer: 1500, showConfirmButton: false });
+        carregarDados();
 
-        } catch (e) { alert('Erro ao salvar perfil'); }
+      } catch (e) { alert('Erro ao salvar perfil'); }
     }
 
     // ==========================================
     // 4. LOGOUT
     // ==========================================
     function logout() {
-        Swal.fire({
-            title: 'Sair da conta?',
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            confirmButtonText: 'Sair'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                localStorage.removeItem('usuarioLogado');
-                window.location.href = "index.html";
-            }
-        });
+      Swal.fire({
+        title: 'Sair da conta?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Sair'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('usuarioLogado');
+          window.location.href = "index.html";
+        }
+      });
     }
 
     // Inicializa a página
     carregarDados();
   </script>
 </body>
+
 </html>
