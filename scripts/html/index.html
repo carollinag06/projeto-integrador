@@ -29,6 +29,17 @@
         <li><a href="#sobre-nos">Sobre-nos</a></li>
         <li><a href="cardapio.html">Menu</a></li>
         <li><a href="#promocoes">Promoções</a></li>
+
+        <li class="mobile-link"><a href="reserva.html">Fazer Reserva</a></li>
+
+        <li class="mobile-link" id="mobile-login">
+          <a href="login.html">Login / Cadastre-se</a>
+        </li>
+
+        <li class="mobile-link" id="mobile-perfil" style="display: none;">
+          <a href="pagUsuario.html">Minha Conta</a>
+        </li>
+        
       </ul>
 
       <a href="reserva.html"><button>Reserva</button></a>
@@ -201,7 +212,7 @@
       <div class="coluna">
         <h2>Sapori d'Italia</h2>
         <p>Sabores autênticos da culinária italiana direto para sua mesa.</p>
-        <a href="cadastro.html"><button>Cadastre-se</button></a>
+        <a href="cadastro.html" id="cadastro"><button>Cadastre-se</button></a>
 
         <div class="idiomas">
           <a href="index.html"><button class="idio-pt">BR</button></a>
@@ -229,37 +240,45 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <script>
+<script>
     document.addEventListener("DOMContentLoaded", () => {
       // 1. Verifica se o usuário está salvo no navegador
       const usuarioLogado = localStorage.getItem('usuarioLogado');
 
-      // 2. Pega os elementos pelo ID
+      // 2. Pega os elementos DESKTOP
       const btnLogin = document.getElementById('btn-login');
       const btnPerfil = document.getElementById('btn-perfil');
 
+      // 3. Pega os elementos MOBILE (Novos IDs adicionados)
+      const mobileLogin = document.getElementById('mobile-login');
+      const mobilePerfil = document.getElementById('mobile-perfil');
+
       if (usuarioLogado) {
         // --- USUÁRIO ESTÁ LOGADO ---
-        console.log("Usuário logado detectado. Ajustando menu...");
+        console.log("Usuário logado detectado.");
 
-        // Esconde o botão de Login
+        // Ajustes Desktop
         if (btnLogin) btnLogin.style.display = 'none';
-
-        // Mostra a bolinha do Perfil
         if (btnPerfil) btnPerfil.style.display = 'inline-block';
-        console.log("usuário logado.");
+
+        // Ajustes Mobile
+        if (mobileLogin) mobileLogin.style.display = 'none';     // Esconde "Login" no menu
+        if (mobilePerfil) mobilePerfil.style.display = 'block';  // Mostra "Minha Conta" no menu
+
       } else {
         // --- USUÁRIO NÃO ESTÁ LOGADO (Visitante) ---
+        console.log("Nenhum usuário logado.");
 
-        // Garante que o Login apareça
+        // Ajustes Desktop
         if (btnLogin) btnLogin.style.display = 'flex';
-
-        // Garante que o Perfil suma
         if (btnPerfil) btnPerfil.style.display = 'none';
-        console.log("Nenhum usuário logado");
+
+        // Ajustes Mobile
+        if (mobileLogin) mobileLogin.style.display = 'block';    // Mostra "Login" no menu
+        if (mobilePerfil) mobilePerfil.style.display = 'none';   // Esconde "Minha Conta" no menu
       }
     });
-  </script>
+</script>
 </body>
 
 </html>
