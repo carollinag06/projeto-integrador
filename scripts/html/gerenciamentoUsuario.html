@@ -3,389 +3,335 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Gerenciamento de Usuários - Sapori d'Italia</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Usuários</title>
 
     <style>
         body {
             background: #f7f5f0;
             margin: 0;
-            font-family: 'Georgia', serif;
+            font-family: Georgia, serif;
             color: #3a0d0d;
         }
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 15px 20px;
+        h1 {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 42px;
+            font-weight: bold;
+            color: #3a0d0d;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .btn-green {
+            background: #0b6e27;
+            color: #fff;
+        }
+
+        .btn-green:hover {
+            background: #0a5c21;
+        }
+
+        .btn-dark {
+            background: #333;
+            color: #fff;
+        }
+
+        .btn-dark:hover {
+            background: #000;
+        }
+
+        .btn-red {
+            background: #a30000;
+            color: #fff;
+        }
+
+        .btn-red:hover {
+            background: #7a0000;
+        }
+
+        .top-bar {
             display: flex;
             justify-content: space-between;
+            padding: 20px 40px;
             align-items: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .btn-voltar {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px;
-            background: #555;
-            border-radius: 5px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            color: #8B0000;
-            margin-bottom: 20px;
-        }
-
-        /* Botões */
-        .btn {
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-            font-weight: bold;
-            color: white;
-            margin: 2px;
-        }
-
-        .btn-add {
-            background: #28a745;
-            display: block;
-            margin: 0 auto 20px auto;
-            font-size: 16px;
-            padding: 10px 20px;
-        }
-
-        .btn-edit {
-            background: #ffc107;
-            color: #333;
-        }
-
-        .btn-delete {
-            background: #dc3545;
-        }
-
-        /* Tabela */
         table {
-            width: 100%;
+            width: 98%;
+            margin: auto;
+            margin-top: 20px;
             border-collapse: collapse;
-            margin-top: 10px;
+            background: #a00000;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         th,
         td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+            padding: 14px;
+            text-align: center;
+            background: #a00000;
         }
 
-        th {
-            background-color: #8B0000;
-            color: white;
+        tr:nth-child(even) td {
+            background: #b00000;
         }
 
-        tr:hover {
-            background-color: #f1f1f1;
+        tr:hover td {
+            background: #7a0000;
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background: #0009;
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
         }
 
         .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 400px;
+            width: 380px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            font-family: Arial;
+            color: #3a0d0d;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
             border-radius: 8px;
-            position: relative;
+            border: 2px solid #a00000;
+            font-size: 16px;
         }
 
         .close {
             float: right;
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 24px;
             cursor: pointer;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
+            color: #a00000;
             font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .modal-footer {
-            text-align: right;
-            margin-top: 15px;
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <a href="pagUsuario.html" class="btn-voltar">← Voltar ao Perfil</a>
+    <div class="top-bar">
+        <button class="btn btn-dark" onclick="window.location.href='dashboard.html'">← Voltar</button>
+
         <h1>Gerenciamento de Usuários</h1>
-        <div></div>
-    </header>
 
-    <div class="container">
-        <h2>Lista de Usuários Cadastrados</h2>
-        <button class="btn btn-add" onclick="abrirModalCriar()">+ Novo Usuário</button>
-
-        <table id="tabelaUsuarios">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Tipo</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        <button class="btn btn-green" onclick="openCreateModal()">Cadastrar Usuário</button>
     </div>
 
-    <div id="modalCriar" class="modal">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Tipo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaUsuarios"></tbody>
+    </table>
+
+    <!-- MODAL CADASTRO -->
+    <div class="modal" id="modalCriar">
         <div class="modal-content">
-            <span class="close" onclick="fecharModal('modalCriar')">&times;</span>
-            <h3>Novo Usuário</h3>
-            <div class="form-group"><label>Nome</label><input id="novoNome"></div>
-            <div class="form-group"><label>Email</label><input id="novoEmail"></div>
-            <div class="form-group"><label>Telefone</label><input id="novoTelefone"></div>
-            <div class="form-group"><label>Senha</label><input id="novoSenha" type="password"></div>
-            <div class="form-group">
-                <label>Tipo</label>
-                <select id="novoTipo">
-                    <option value="1">Cliente</option>
-                    <option value="2">Admin</option>
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-add" onclick="salvarNovoUsuario()">Cadastrar</button>
-            </div>
+            <span class="close" onclick="closeModal('modalCriar')">&times;</span>
+            <h2>Cadastrar Usuário</h2>
+
+            <input id="createNome" placeholder="Nome completo">
+            <input id="createEmail" placeholder="E-mail">
+            <input id="createTelefone" placeholder="Telefone">
+            <input id="createSenha" type="password" placeholder="Senha">
+
+            <select id="createTipoUsuario">
+                <option value="administrador">Administrador</option>
+                <option value="cliente">Cliente</option>
+            </select>
+
+            <button class="btn btn-green" onclick="criarUsuario()">Cadastrar</button>
         </div>
     </div>
 
-    <div id="modalEditar" class="modal">
+    <!-- MODAL EDITAR -->
+    <div class="modal" id="modalEditar">
         <div class="modal-content">
-            <span class="close" onclick="fecharModal('modalEditar')">&times;</span>
-            <h3>Editar Usuário</h3>
-            <div class="form-group"><label>Nome</label><input id="editNome"></div>
-            <div class="form-group"><label>Email</label><input id="editEmail"></div>
-            <div class="form-group"><label>Telefone</label><input id="editTelefone"></div>
-            <div class="form-group"><label>Nova Senha (deixe vazio para não mudar)</label><input id="editSenha"
-                    type="password"></div>
-            <div class="form-group"><label>Tipo (1=Cliente, 2=Admin)</label>
-                <select id="editTipo">
-                    <option value="1">Cliente</option>
-                    <option value="2">Admin</option>
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-edit" onclick="salvarEdicao()">Salvar Alterações</button>
-            </div>
+            <span class="close" onclick="closeModal('modalEditar')">&times;</span>
+            <h2>Editar Usuário</h2>
+
+            <input id="editNome">
+            <input id="editEmail">
+            <input id="editTelefone">
+            <input id="editSenha" type="password" placeholder="Nova senha (opcional)">
+            <select id="editTipoUsuario">
+                <option value="administrador">Administrador</option>
+                <option value="cliente">Cliente</option>
+            </select>
+
+            <button class="btn btn-green" onclick="salvarEdicao()">Salvar</button>
+        </div>
+    </div>
+
+    <!-- MODAL EXCLUIR -->
+    <div class="modal" id="modalExcluir">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalExcluir')">&times;</span>
+            <h2>Excluir usuário</h2>
+
+            <p>Tem certeza que deseja excluir?</p>
+
+            <button class="btn btn-dark" onclick="closeModal('modalExcluir')">Cancelar</button>
+            <button class="btn btn-red" onclick="confirmarExclusao()">Excluir</button>
         </div>
     </div>
 
     <script>
-        const API_URL = "http://localhost:3000/usuarios";
-        let idEdicao = null; // Variável global para guardar o ID
 
-        // 1. CARREGAR TABELA
-        async function carregarUsuarios() {
-            const tbody = document.querySelector("#tabelaUsuarios tbody");
-            tbody.innerHTML = "<tr><td colspan='5' style='text-align:center'>Carregando...</td></tr>";
+        let idEdicao = null;
+        let idExcluir = null;
 
-            try {
-                const response = await fetch(API_URL);
-                const usuarios = await response.json();
+        const API = "http://localhost:3000/usuarios";
 
-                tbody.innerHTML = ""; // Limpa
+        function carregarUsuarios() {
+            fetch(API)
+                .then(r => r.json())
+                .then(data => {
+                    let html = "";
 
-                usuarios.forEach(u => {
-                    let tipoTexto = (u.tipoUsuario === 2) ? "Admin" : "Cliente";
-                    // Tratamento para nulos
-                    const nome = u.nome || '-';
-                    const email = u.email || '-';
-                    const telefone = u.telefone || '-';
+                    data.forEach(user => {
+                        html += `
+                        <tr>
+                            <td>${user.idUsuario}</td>
+                            <td>${user.nome}</td>
+                            <td>${user.email}</td>
+                            <td>${user.telefone ?? "-"}</td>
+                            <td>${user.tipoUsuario}</td>
 
-                    const tr = document.createElement("tr");
-                    tr.innerHTML = `
-                        <td>${u.id}</td>
-                        <td>${nome}</td>
-                        <td>${email}</td>
-                        <td>${tipoTexto}</td>
-                        <td>
-                            <button class="btn btn-edit" onclick="abrirModalEditar('${u.id}', '${nome}', '${email}', '${telefone}', '${u.tipoUsuario}')">Editar</button>
-                            <button class="btn btn-delete" onclick="excluirUsuario('${u.id}')">Excluir</button>
-                        </td>
-                    `;
-                    tbody.appendChild(tr);
+                            <td>
+                                <button class="btn btn-green"
+                                    onclick="abrirEditar(${user.idUsuario}, '${user.nome}', '${user.email}', '${user.telefone}', '${user.tipoUsuario}')">
+                                    Editar
+                                </button>
+
+                                <button class="btn btn-red" onclick="abrirExcluir(${user.idUsuario})">
+                                    Excluir
+                                </button>
+                            </td>
+                        </tr>`;
+                    });
+
+                    document.getElementById("tabelaUsuarios").innerHTML = html;
                 });
-
-            } catch (error) {
-                console.error("Erro:", error);
-                tbody.innerHTML = "<tr><td colspan='5' style='text-align:center; color:red'>Erro ao carregar</td></tr>";
-            }
         }
 
-        // 2. FUNÇÕES DE MODAL
-        function abrirModalCriar() {
-            document.getElementById("modalCriar").style.display = "block";
-        }
-
-        function abrirModalEditar(id, nome, email, telefone, tipo) {
-            // GUARDA O ID NA VARIÁVEL GLOBAL
-            idEdicao = id;
-            console.log("Editando ID:", idEdicao); // Debug
-
-            document.getElementById("editNome").value = nome !== 'null' ? nome : '';
-            document.getElementById("editEmail").value = email !== 'null' ? email : '';
-            document.getElementById("editTelefone").value = telefone !== 'null' ? telefone : '';
-            document.getElementById("editSenha").value = ''; // Limpa senha
-            document.getElementById("editTipo").value = tipo;
-
-            document.getElementById("modalEditar").style.display = "block";
-        }
-
-        function fecharModal(idModal) {
-            document.getElementById(idModal).style.display = "none";
-        }
-
-        // 3. SALVAR NOVO
-        async function salvarNovoUsuario() {
-            const dados = {
-                nome: document.getElementById("novoNome").value,
-                email: document.getElementById("novoEmail").value,
-                telefone: document.getElementById("novoTelefone").value,
-                senha: document.getElementById("novoSenha").value,
-                tipoUsuario: document.getElementById("novoTipo").value
-            };
-
-            if (!dados.senha || dados.senha.length < 6) {
-                alert("A senha precisa ter no mínimo 6 caracteres");
-                return;
-            }
-
-            try {
-                const res = await fetch(API_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(dados)
-                });
-
-                if (res.ok) {
-                    alert("Usuário criado!");
-                    fecharModal("modalCriar");
-                    carregarUsuarios();
-                } else {
-                    alert("Erro ao criar usuário.");
-                }
-            } catch (e) { console.error(e); }
-        }
-
-        // 4. SALVAR EDIÇÃO
-        async function salvarEdicao() {
-            if (!idEdicao || idEdicao === 'undefined') {
-                alert("Erro: ID do usuário inválido.");
-                return;
-            }
-
-            const dados = {
-                nome: document.getElementById("editNome").value,
-                email: document.getElementById("editEmail").value,
-                telefone: document.getElementById("editTelefone").value,
-                tipoUsuario: document.getElementById("editTipo").value
-            };
-
-            // Se preencheu senha, adiciona ao objeto
-            const novaSenha = document.getElementById("editSenha").value;
-            if (novaSenha && novaSenha.length > 0) {
-                dados.senha = novaSenha;
-            }
-
-            try {
-                const res = await fetch(`${API_URL}/${idEdicao}`, {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(dados)
-                });
-
-                if (res.ok) {
-                    alert("Usuário atualizado!");
-                    fecharModal("modalEditar");
-                    carregarUsuarios();
-                } else {
-                    alert("Erro ao atualizar.");
-                }
-            } catch (e) { console.error(e); }
-        }
-
-        // 5. EXCLUIR
-        async function excluirUsuario(id) {
-            if (confirm("Tem certeza que deseja excluir este usuário?")) {
-                try {
-                    const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
-                    if (res.ok) {
-                        alert("Usuário excluído.");
-                        carregarUsuarios();
-                    } else {
-                        alert("Erro ao excluir.");
-                    }
-                } catch (e) { console.error(e); }
-            }
-        }
-
-        // Inicia
         carregarUsuarios();
 
-        // Fecha modal se clicar fora
-        window.onclick = function (event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = "none";
-            }
+        function openCreateModal() {
+            document.getElementById("modalCriar").style.display = "flex";
         }
+
+        function abrirEditar(id, nome, email, telefone, tipo) {
+            idEdicao = id;
+
+            document.getElementById("editNome").value = nome;
+            document.getElementById("editEmail").value = email;
+            document.getElementById("editTelefone").value = telefone;
+            document.getElementById("editTipoUsuario").value = tipo;
+
+            document.getElementById("modalEditar").style.display = "flex";
+        }
+
+        function abrirExcluir(id) {
+            idExcluir = id;
+            document.getElementById("modalExcluir").style.display = "flex";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        function criarUsuario() {
+            const nome = document.getElementById("createNome").value;
+            const email = document.getElementById("createEmail").value;
+            const telefone = document.getElementById("createTelefone").value;
+            const senha = document.getElementById("createSenha").value;
+            const tipoUsuario = document.getElementById("createTipoUsuario").value;
+
+            fetch(API, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nome, email, telefone, senha, tipoUsuario })
+            })
+                .then(() => {
+                    closeModal("modalCriar");
+                    carregarUsuarios();
+                });
+        }
+
+        function salvarEdicao() {
+            const nome = document.getElementById("editNome").value;
+            const email = document.getElementById("editEmail").value;
+            const telefone = document.getElementById("editTelefone").value;
+            const senha = document.getElementById("editSenha").value;
+            const tipoUsuario = document.getElementById("editTipoUsuario").value;
+
+            fetch(`${API}/${idEdicao}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nome, email, telefone, senha, tipoUsuario })
+            })
+                .then(() => {
+                    closeModal("modalEditar");
+                    carregarUsuarios();
+                });
+        }
+
+        function confirmarExclusao() {
+            fetch(`${API}/${idExcluir}`, { method: "DELETE" })
+                .then(() => {
+                    closeModal("modalExcluir");
+                    carregarUsuarios();
+                });
+        }
+
     </script>
 
 </body>
