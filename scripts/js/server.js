@@ -1,17 +1,21 @@
-const express = require('express');
+// ===============================
+// IMPORTAÇÕES
+// ===============================
+const express = require('express'); 
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const multer = require('multer');
+const bcrypt = require('bcryptjs'); // Segurança
 
-// Importações do Sequelize e Operadores
+// Sequelize
 const { Sequelize, DataTypes, Op } = require('sequelize');
 
-// Configuração de Upload (Para as imagens dos pratos)
 const upload = multer({ storage: multer.memoryStorage() });
 
-// ==========================================
-// 1. CONFIGURAÇÃO DA CONEXÃO COM O BANCO
-// ==========================================
+
+// ===============================
+// 1. CONFIGURAÇÃO DO BANCO
+// ===============================
 const sequelize = new Sequelize('Sapori', 'admin', 'admin', {
     host: 'DESKTOP-N4J6VRI',
     dialect: 'mssql',
@@ -19,143 +23,152 @@ const sequelize = new Sequelize('Sapori', 'admin', 'admin', {
     logging: false,
     dialectOptions: {
         options: {
-            // MUDANÇA IMPORTANTE AQUI:
-            encrypt: true, // Mude de false para true. O SQL Server geralmente exige isso.
-            trustServerCertificate: true, // Isso aceita o certificado local do seu PC.
+            encrypt: true,
+            trustServerCertificate: true,
             enableArithAbort: true
         }
     }
 });
-// ==========================================
-// 2. MODELOS (Mapeamento das Tabelas)
-// ==========================================
 
-// --- MODELO USUARIO (Tabela: Usuarios) ---
+
+// ===============================
+// 2. FUNÇÕES DE VALIDAÇÃO
+// ===============================
+function validarCPF(cpf) {
+    cpf = cpf.replace(/[^\d]+/g, '');
+    if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) return false;
+
+    let soma = 0, resto;
+    for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    resto = (soma * 10) % 11;
+    if (resto >= 10) resto = 0;
+    if (resto !== parseInt(cpf.substring(9, 10))) return false;
+
+    soma = 0;
+    for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    resto = (soma * 10) % 11;
+    if (resto >= 10) resto = 0;
+
+    return resto === parseInt(cpf.substring(10, 11));
+}
+
+function validarEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+
+// ===============================
+// 3. MODELOS
+// ===============================
 const Usuario = sequelize.define('Usuario', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    nome: { type: Sequelize.STRING(100), allowNull: true },
-    senha: { type: Sequelize.STRING(20), allowNull: true },
-    frequencia_visitas: { type: Sequelize.INTEGER, allowNull: true },
-    telefone: { type: Sequelize.STRING(15), allowNull: true },
-    cpf: { type: Sequelize.STRING(11), allowNull: true },
-    pratos_preferidos: { type: Sequelize.STRING(50), allowNull: true },
-    email: { type: Sequelize.STRING(50), allowNull: true },
-
-    // IMPORTANTE: Definido como INTEGER (1 = Cliente, 2 = Admin)
+    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true, field: 'id' },
+    nome: Sequelize.STRING(100),
+    senha: Sequelize.STRING(255),
+    frequencia_visitas: Sequelize.INTEGER,
+    telefone: Sequelize.STRING(15),
+    cpf: Sequelize.STRING(14),
+    pratos_preferidos: Sequelize.STRING(50),
+    email: Sequelize.STRING(50),
     tipoUsuario: { type: Sequelize.INTEGER, defaultValue: 1 },
+    DataHoraCadastro: { type: Sequelize.DATE, defaultValue: Sequelize.literal('GETDATE()') }
+}, { tableName: 'Usuarios', timestamps: false });
 
-    // IMPORTANTE: Nome exato da coluna no SQL Server
-    DataHoraCadastro: {
-        type: Sequelize.DATE,
-        allowNull: true,
-        defaultValue: Sequelize.literal('GETDATE()')
-    }
-}, {
-    tableName: 'Usuarios', // <--- NOME CORRETO DA TABELA
-    timestamps: false
-});
-
-// --- MODELO RESERVA (Tabela: Reservas) ---
 const Reserva = sequelize.define('Reserva', {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    data_reserva: { type: Sequelize.STRING(10), allowNull: false },
-    horario: { type: Sequelize.STRING(5), allowNull: false },
-    numero_pessoas: { type: Sequelize.STRING(10), allowNull: false },
+    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+    data_reserva: Sequelize.STRING(10),
+    horario: Sequelize.STRING(5),
+    numero_pessoas: Sequelize.STRING(10),
     status: { type: Sequelize.STRING(20), defaultValue: 'Confirmada' },
-    observacoes: { type: Sequelize.STRING(200), allowNull: true },
-    usuarioId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: Usuario, key: 'id' }
-    }
-}, {
-    tableName: 'Reservas',
-    timestamps: false
-});
+    observacoes: Sequelize.STRING(200),
+    usuarioId: { type: Sequelize.INTEGER, allowNull: false, references: { model: Usuario, key: 'id' } }
+}, { tableName: 'Reservas', timestamps: false });
 
-// --- MODELO PRATOS (Tabela: Pratos) ---
 const Pratos = sequelize.define('Pratos', {
-    idPratos: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
-    },
-    nome: { type: Sequelize.STRING(100), allowNull: false },
-    modo_preparo: { type: Sequelize.STRING(500), allowNull: true },
-    preco: { type: Sequelize.DECIMAL(10, 2), allowNull: false },
-    descricao: { type: Sequelize.STRING(200), allowNull: true },
-    promocao: { type: Sequelize.BOOLEAN, allowNull: true },
-    tipo: { type: Sequelize.STRING, allowNull: true },
-    imagem: { type: Sequelize.BLOB, allowNull: true }
-}, {
-    tableName: 'Pratos',
-    timestamps: false
-});
+    idPratos: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+    nome: Sequelize.STRING(100),
+    modo_preparo: Sequelize.STRING(500),
+    preco: Sequelize.DECIMAL(10, 2),
+    descricao: Sequelize.STRING(200),
+    promocao: Sequelize.BOOLEAN,
+    tipo: Sequelize.STRING,
+    imagem: Sequelize.BLOB
+}, { tableName: 'Pratos', timestamps: false });
 
-// --- RELACIONAMENTOS ---
 Usuario.hasMany(Reserva, { foreignKey: 'usuarioId' });
 Reserva.belongsTo(Usuario, { foreignKey: 'usuarioId' });
 
-// ==========================================
-// 3. CONFIGURAÇÃO DO SERVIDOR EXPRESS
-// ==========================================
+
+// ===============================
+// 4. CONFIG APP
+// ===============================
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
-// ==========================================
-// 4. ROTAS - DASHBOARD (CORRIGIDAS)
-// ==========================================
 
-// Total de Clientes (tipoUsuario = 1)
+// ===============================
+// 5. ROTAS DE AUTENTICAÇÃO
+// ===============================
+app.post('/login', async (req, res) => {
+    try {
+        const { email, senha } = req.body;
+        const usuario = await Usuario.findOne({ where: { email } });
+
+        if (!usuario) return res.status(404).json({ erro: 'Email não cadastrado.' });
+
+        let senhaValida;
+        senhaValida = usuario.senha.startsWith('$2a$')
+            ? await bcrypt.compare(senha, usuario.senha)
+            : (usuario.senha === senha);
+
+        if (!senhaValida) return res.status(401).json({ erro: 'Senha incorreta.' });
+
+        res.json({ sucesso: true, usuario: { id: usuario.id, nome: usuario.nome, tipoUsuario: usuario.tipoUsuario } });
+    } catch (error) { res.status(500).json({ erro: error.message }); }
+});
+
+app.post('/usuarios', async (req, res) => {
+    try {
+        const { nome, email, cpf, senha, telefone, tipoUsuario } = req.body;
+
+        if (!validarEmail(email)) return res.status(400).json({ erro: "E-mail inválido." });
+        if (!validarCPF(cpf)) return res.status(400).json({ erro: "CPF inválido." });
+        if (!senha || senha.length < 6) return res.status(400).json({ erro: "Senha deve ter no mínimo 6 dígitos." });
+
+        if (await Usuario.findOne({ where: { email } })) return res.status(400).json({ erro: "E-mail já em uso." });
+        if (await Usuario.findOne({ where: { cpf } })) return res.status(400).json({ erro: "CPF já cadastrado." });
+
+        const senhaHash = await bcrypt.hash(senha, await bcrypt.genSalt(10));
+        const tipoFinal = (tipoUsuario === 'admin' || tipoUsuario == 2) ? 2 : 1;
+
+        await Usuario.create({ nome, email, telefone, cpf, senha: senhaHash, tipoUsuario: tipoFinal });
+        res.status(201).json({ msg: "Usuário cadastrado com sucesso!" });
+
+    } catch (error) { res.status(400).json({ erro: error.message }); }
+});
+
+
+// ===============================
+// 6. ROTAS GERAIS / CRUD
+// ===============================
+
+// Dashboard
 app.get("/dashboard/totalUsuarios", async (req, res) => {
-    try {
-        // Busca onde tipoUsuario é 1 (Cliente)
-        const total = await Usuario.count({ where: { tipoUsuario: 1 } });
-        res.json({ total });
-    } catch (e) {
-        console.error("Erro totalUsuarios:", e);
-        res.status(500).json({ erro: e.message });
-    }
+    try { res.json({ total: await Usuario.count({ where: { tipoUsuario: 1 } }) }); }
+    catch (e) { res.status(500).json({ erro: e.message }); }
 });
-
-// Total de Reservas
 app.get("/dashboard/totalReservas", async (req, res) => {
-    try {
-        const total = await Reserva.count();
-        res.json({ total });
-    } catch (e) { res.status(500).json({ erro: e.message }); }
+    try { res.json({ total: await Reserva.count() }); }
+    catch (e) { res.status(500).json({ erro: e.message }); }
 });
-
-// Último Cliente Cadastrado (tipoUsuario = 1)
 app.get("/dashboard/ultimoCliente", async (req, res) => {
-    try {
-        const ultimo = await Usuario.findOne({
-            where: { tipoUsuario: 1 },
-            order: [['id', 'DESC']] // Ordena pelo ID decrescente
-        });
-        // Se não tiver ninguém, retorna objeto vazio para não quebrar o front
-        res.json(ultimo || {});
-    } catch (e) {
-        console.error("Erro ultimoCliente:", e);
-        res.status(500).json({ erro: e.message });
-    }
+    try { res.json(await Usuario.findOne({ where: { tipoUsuario: 1 }, order: [['id', 'DESC']] }) || {}); }
+    catch (e) { res.status(500).json({ erro: e.message }); }
 });
-
-// Gráfico: Usuários por Mês (Baseado em DataHoraCadastro e tipoUsuario = 1)
 app.get("/dashboard/usuariosPorMes/:ano", async (req, res) => {
-    const ano = req.params.ano;
     try {
         const dados = await Usuario.findAll({
             attributes: [
@@ -163,200 +176,88 @@ app.get("/dashboard/usuariosPorMes/:ano", async (req, res) => {
                 [sequelize.fn("COUNT", sequelize.col("id")), "total"]
             ],
             where: {
-                tipoUsuario: 1, // Apenas Clientes
-                [Op.and]: sequelize.where(sequelize.fn("YEAR", sequelize.col("DataHoraCadastro")), ano)
+                tipoUsuario: 1,
+                [Op.and]: sequelize.where(sequelize.fn("YEAR", sequelize.col("DataHoraCadastro")), req.params.ano)
             },
             group: [sequelize.fn("MONTH", sequelize.col("DataHoraCadastro"))],
             order: [sequelize.fn("MONTH", sequelize.col("DataHoraCadastro"))]
         });
         res.json(dados);
-    } catch (e) {
-        console.error("Erro usuariosPorMes:", e);
-        res.status(500).json({ erro: e.message });
-    }
+    } catch { res.json([]); }
 });
-
-// Gráfico: Reservas por Mês
 app.get("/dashboard/reservasPorMes/:ano", async (req, res) => {
-    const ano = req.params.ano;
     try {
-        // Tenta converter string data_reserva para DATE para pegar o MÊS
         const dados = await Reserva.findAll({
             attributes: [
                 [sequelize.fn("MONTH", sequelize.col("data_reserva")), "mes"],
                 [sequelize.fn("COUNT", sequelize.col("id")), "total"]
             ],
-            // Filtra pelo ano (convertendo a string 'YYYY-MM-DD' para data)
-            where: sequelize.where(sequelize.fn("YEAR", sequelize.cast(sequelize.col("data_reserva"), 'DATE')), ano),
+            where: sequelize.where(sequelize.fn("YEAR", sequelize.cast(sequelize.col("data_reserva"), 'DATE')), req.params.ano),
             group: [sequelize.fn("MONTH", sequelize.col("data_reserva"))],
             order: [sequelize.fn("MONTH", sequelize.col("data_reserva"))]
         });
         res.json(dados);
-    } catch (e) {
-        console.error("Erro reservasPorMes (verifique formato da data no banco):", e);
-        res.json([]); // Retorna vazio se der erro de conversão
-    }
+    } catch { res.json([]); }
 });
 
-// ==========================================
-// 5. ROTAS CRUD (USUÁRIOS, RESERVAS, PRATOS)
-// ==========================================
-
-// --- LOGIN ---
-app.post('/login', async (req, res) => {
-    try {
-        const { email, senha } = req.body;
-        const usuario = await Usuario.findOne({ where: { email } });
-
-        if (!usuario) return res.status(404).json({ erro: 'Email não encontrado' });
-
-        // CUIDADO: Senha em texto plano (ideal seria hash)
-        if (usuario.senha !== senha) return res.status(401).json({ erro: 'Senha incorreta' });
-
-        res.json({
-            sucesso: true,
-            usuario: {
-                id: usuario.id,
-                nome: usuario.nome,
-                tipoUsuario: usuario.tipoUsuario // Retorna 1 ou 2
-            }
-        });
-    } catch (error) {
-        res.status(500).json({ erro: error.message });
-    }
-});
-
-// --- CRIAR USUÁRIO ---
-app.post('/usuarios', async (req, res) => {
-    try {
-        if (!req.body.senha || req.body.senha.length < 6) {
-            return res.status(400).json({ erro: "A senha deve ter no mínimo 6 caracteres." });
-        }
-
-        // Prepara os dados. Se tipoUsuario vier como texto, converte ou define padrão.
-        const dados = { ...req.body };
-
-        // Lógica de segurança simples: Se não mandar nada, é Cliente (1).
-        if (!dados.tipoUsuario) dados.tipoUsuario = 1;
-
-        // Se o frontend mandar "admin" escrito, converte para 2
-        if (dados.tipoUsuario === 'admin') dados.tipoUsuario = 2;
-        if (dados.tipoUsuario === 'cliente') dados.tipoUsuario = 1;
-
-        const novo = await Usuario.create(dados);
-        res.status(201).json(novo);
-    } catch (error) {
-        res.status(400).json({ erro: error.message });
-    }
-});
-
-// Listar Usuários
-app.get('/usuarios', async (req, res) => {
-    try {
-        const lista = await Usuario.findAll();
-        res.json(lista);
-    } catch (e) { res.status(500).json({ erro: e.message }); }
-});
-
-// Editar Usuário
-app.put('/usuarios/:id', async (req, res) => {
-    try {
-        await Usuario.update(req.body, { where: { id: req.params.id } });
-        res.json({ msg: "Atualizado" });
-    } catch (e) { res.status(500).json({ erro: e.message }); }
-});
-
-// Deletar Usuário
-app.delete('/usuarios/:id', async (req, res) => {
-    try {
-        await Usuario.destroy({ where: { id: req.params.id } });
-        res.json({ msg: "Deletado" });
-    } catch (e) { res.status(500).json({ erro: e.message }); }
-});
-
-// Buscar usuário por ID (necessário para a página de perfil)
+// Usuários
+app.get('/usuarios', async (_, res) => res.json(await Usuario.findAll()));
 app.get('/usuarios/:id', async (req, res) => {
-    try {
-        const id = req.params.id;
-        console.log(`GET /usuarios/${id} - solicitacao de perfil`);
-        const usuario = await Usuario.findByPk(id);
-        if (!usuario) {
-            console.log(`Usuário id=${id} não encontrado.`);
-            return res.status(404).json({ erro: 'User not found' });
-        }
-        console.log(`Usuário id=${id} encontrado:`, { id: usuario.id, nome: usuario.nome });
-        res.json(usuario);
-    } catch (e) {
-        console.error('Erro ao buscar usuário:', e);
-        res.status(500).json({ erro: e.message });
-    }
+    const u = await Usuario.findByPk(req.params.id);
+    if (!u) return res.status(404).json({ erro: '404' });
+    res.json(u);
+});
+app.put('/usuarios/:id', async (req, res) => {
+    await Usuario.update(req.body, { where: { id: req.params.id } });
+    res.json({ msg: 'Ok' });
+});
+app.delete('/usuarios/:id', async (req, res) => {
+    await Usuario.destroy({ where: { id: req.params.id } });
+    res.json({ msg: 'Ok' });
 });
 
-// --- RESERVAS ---
+// Reservas
 app.post('/reservas', async (req, res) => {
-    try {
-        const nova = await Reserva.create(req.body);
-        res.status(201).json({ mensagem: "Reservado!", id: nova.id });
-    } catch (e) { res.status(500).json({ erro: e.message }); }
+    try { res.status(201).json({ id: (await Reserva.create(req.body)).id }); }
+    catch (e) { res.status(500).json({ erro: e.message }); }
+});
+app.get('/reservas/usuario/:id', async (req, res) =>
+    res.json(await Reserva.findAll({ where: { usuarioId: req.params.id }, order: [['data_reserva', 'DESC']] }))
+);
+app.put('/reservas/:id', async (req, res) => {
+    await Reserva.update(req.body, { where: { id: req.params.id } });
+    res.json({ msg: 'Ok' });
+});
+app.delete('/reservas/:id', async (req, res) => {
+    await Reserva.destroy({ where: { id: req.params.id } });
+    res.json({ ok: true });
 });
 
-app.get('/reservas/usuario/:idUsuario', async (req, res) => {
-    const lista = await Reserva.findAll({
-        where: { usuarioId: req.params.idUsuario },
-        order: [['data_reserva', 'DESC']]
-    });
-    res.json(lista);
+// Pratos
+app.get('/pratos', async (_, res) => {
+    const l = await Pratos.findAll();
+    res.json(l.map(p => ({
+        ...p.toJSON(),
+        imagem: p.imagem ? `data:image/jpeg;base64,${Buffer.from(p.imagem).toString("base64")}` : null
+    })));
 });
-
-// --- PRATOS (CARDÁPIO) ---
-app.get('/pratos', async (req, res) => {
-    try {
-        const lista = await Pratos.findAll();
-        const resposta = lista.map(p => ({
-            ...p.toJSON(),
-            imagem: p.imagem ? `data:image/jpeg;base64,${Buffer.from(p.imagem).toString("base64")}` : null
-        }));
-        res.json(resposta);
-    } catch (e) { res.status(500).json({ erro: e.message }); }
-});
-
-app.post('/pratos', upload.single('imagem'), async (req, res) => {
-    try {
-        await Pratos.create({
-            ...req.body,
-            imagem: req.file ? req.file.buffer : null
-        });
-        res.status(201).json({ msg: "Criado" });
-    } catch (e) { res.status(400).json({ erro: e.message }); }
-});
-
+app.post('/pratos', upload.single('imagem'), async (req, res) =>
+    res.status(201).json({ msg: await Pratos.create({ ...req.body, imagem: req.file?.buffer || null }) && 'Ok' })
+);
 app.put('/pratos/:id', upload.single('imagem'), async (req, res) => {
-    try {
-        let dados = { ...req.body };
-        if (req.file) dados.imagem = req.file.buffer;
-        await Pratos.update(dados, { where: { idPratos: req.params.id } });
-        res.json({ msg: "Atualizado" });
-    } catch (e) { res.status(500).json({ erro: e.message }); }
+    const d = { ...req.body, ...(req.file && { imagem: req.file.buffer }) };
+    await Pratos.update(d, { where: { idPratos: req.params.id } });
+    res.json({ msg: 'Ok' });
 });
-
 app.delete('/pratos/:id', async (req, res) => {
-    try {
-        await Pratos.destroy({ where: { idPratos: req.params.id } });
-        res.json({ msg: "Deletado" });
-    } catch (e) { res.status(500).json({ erro: e.message }); }
+    await Pratos.destroy({ where: { idPratos: req.params.id } });
+    res.json({ msg: 'Ok' });
 });
 
-// ==========================================
-// 6. INICIALIZAÇÃO
-// ==========================================
-sequelize.sync().then(() => {
-    app.listen(PORT, () => {
-        console.log(`---------------------------------------`);
-        console.log(`✅ SERVIDOR RODANDO NA PORTA ${PORT}`);
-        console.log(`📂 Tabela 'Usuarios' conectada`);
-        console.log(`📂 Tabela 'Reservas' conectada`);
-        console.log(`---------------------------------------`);
-    });
-}).catch(err => {
-    console.error("❌ ERRO AO CONECTAR:", err);
-});
+
+// ===============================
+// START SERVER
+// ===============================
+sequelize.sync()
+  .then(() => app.listen(PORT, () => console.log(`🔥 SERVIDOR RODANDO NA PORTA ${PORT}`)))
+  .catch(err => console.error('❌ ERRO AO CONECTAR COM O BANCO:', err));
