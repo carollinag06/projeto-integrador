@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express'); 
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const multer = require('multer');
@@ -12,8 +12,8 @@ const upload = multer({ storage: multer.memoryStorage() });
 // ==========================================
 // 1. CONFIGURAÇÃO DA CONEXÃO COM O BANCO
 // ==========================================
-const sequelize = new Sequelize('Sapori', 'adminSapori', '$gMr$j!Mj73us*#', {
-    host: 'sapori.database.windows.net',
+const sequelize = new Sequelize('Sapori', 'admin', 'admin', {
+    host: 'DESKTOP-N4J6VRI',
     dialect: 'mssql',
     port: 1433,
     logging: false,
