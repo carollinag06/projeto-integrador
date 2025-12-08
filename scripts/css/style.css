@@ -312,73 +312,151 @@ nav i {
   background-color: var(--cor-fundo);
   text-align: center;
   width: 100%;
-  padding: 80px 0;
+  padding: 80px 20px;
+  /* Adicionado padding lateral para telas pequenas */
 }
 
+/* Título da Seção */
 #promocoes h1 {
-  font-size: 60px;
-  margin-top: 15px;
+  font-family: var(--fonte-serif);
+  /* Usa a fonte elegante definida no root */
+  font-size: 48px;
+  /* Reduzi um pouco para ficar mais elegante */
   color: var(--cor-secundaria);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
 }
 
+/* Container dos Cards */
 #promocoes .conteiner {
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: 40px;
   flex-wrap: wrap;
   margin-top: 50px;
   padding-bottom: 20px;
 }
 
+/* O Card (Menu) */
 #promocoes .menu {
-  text-align: center;
-  width: 250px;
-  height: 380px;
+  width: 280px;
+  /* Um pouco mais largo */
   background-color: white;
   border-radius: 20px;
   padding: 15px;
-  color: #000000;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.404);
+  color: #333;
+
+  /* Sombra mais suave e moderna */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+
+  /* Transição suave para o hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  /* Importante para o zoom da imagem não sair do card */
+}
+
+/* Efeito ao passar o mouse no Card */
+#promocoes .menu:hover {
+  transform: translateY(-10px);
+  /* O card sobe levemente */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  /* Sombra aumenta */
+}
+
+/* Área da Imagem (para controlar o zoom) */
+.img-container {
+  width: 100%;
+  height: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+  /* Corta a imagem se ela der zoom */
+  margin-bottom: 15px;
 }
 
 #promocoes .menu img {
-  width: 95%;
-  border-radius: 20px;
-  padding-top: 8px;
-  height: 250px;
-  padding-bottom: 10px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s ease;
+  /* Transição lenta para o zoom */
 }
 
+/* Zoom na imagem ao passar o mouse no card */
+#promocoes .menu:hover img {
+  transform: scale(1.1);
+}
+
+/* Nome do Prato */
 #promocoes .menu h3 {
-  padding-top: 8px;
-  font-size: 18px;
+  font-family: var(--fonte-serif);
+  font-size: 20px;
+  color: var(--cor-secundaria);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
+/* Preço */
 #promocoes .menu p {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: bold;
+  color: var(--cor-primaria);
+  /* Vermelho para destaque */
+  margin-top: auto;
+  /* Empurra o preço para baixo se o texto for curto */
 }
 
+/* Botão Principal */
 #promocoes .botao_inicial {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 #promocoes button {
   background-color: var(--cor-primaria);
   color: #ffffff;
   border: none;
-  border-radius: 5px;
-  padding: 10px 9px;
-  margin-top: 35px;
-  text-decoration: none;
+  border-radius: 50px;
+  /* Botão arredondado (Pill shape) */
+  padding: 15px 40px;
+  margin-top: 20px;
   font-size: 16px;
-  transition: background-color 0.3s, transform 0.3s;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+  /* Sombra vermelha suave */
+  transition: all 0.3s ease;
 }
 
 #promocoes button:hover {
+  background-color: var(--cor-secundaria);
+  /* Muda para marrom ao passar o mouse */
   transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(90, 61, 40, 0.4);
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+  #promocoes h1 {
+    font-size: 36px;
+  }
+
+  #promocoes .conteiner {
+    gap: 30px;
+  }
+
+  #promocoes .menu {
+    width: 100%;
+    /* Ocupa a largura total no celular */
+    max-width: 320px;
+    /* Mas não fica gigante */
+  }
 }
 
 /* ========================== RESERVAS ========================== */

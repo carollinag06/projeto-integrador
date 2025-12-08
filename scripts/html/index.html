@@ -39,7 +39,7 @@
         <li class="mobile-link" id="mobile-perfil" style="display: none;">
           <a href="pagUsuario.html">Minha Conta</a>
         </li>
-        
+
       </ul>
 
       <a href="reserva.html"><button>Reserva</button></a>
@@ -90,29 +90,16 @@
 
   <section id="promocoes">
     <h1>PROMOÇÕES</h1>
-    <div class="conteiner">
-      <div class="menu">
-        <img src="../imagens/imagens-promocao/lasangne.jpg" alt="">
-        <h3>LASANHA</h3>
-        <p>R$18,90</p>
-      </div>
 
-      <div class="menu">
-        <img src="../imagens/imagens-promocao/images.jpg" alt="">
-        <h3>PIZZA PEPPERONI</h3>
-        <p>R$18,90</p>
-      </div>
-
-      <div class="menu">
-        <img src="../imagens/imagens-promocao/croasiant.jpg" alt="">
-        <h3>CROISSANT</h3>
-        <p>R$18,90</p>
-      </div>
+    <div class="conteiner" id="promocoes-container">
+      <p style="text-align: center; width: 100%;">Carregando deliciosas ofertas...</p>
     </div>
 
     <a href="cardapio.html" class="botao"><button>VEJA NOSSO CARDÁPIO COMPLETO</button></a>
 
   </section>
+
+  <script src="../js/index.js"></script>
 
   <section id="reserva">
     <div class="texto">
@@ -240,7 +227,7 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-<script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       // 1. Verifica se o usuário está salvo no navegador
       const usuarioLogado = localStorage.getItem('usuarioLogado');
@@ -278,7 +265,7 @@
         if (mobilePerfil) mobilePerfil.style.display = 'none';   // Esconde "Minha Conta" no menu
       }
     });
-</script>
+  </script>
 </body>
 
 </html>
